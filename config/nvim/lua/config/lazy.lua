@@ -43,6 +43,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.linting.eslint" },
     -- ui extras
     { import = "lazyvim.plugins.extras.ui.mini-starter" },
+    { import = "lazyvim.plugins.extras.ui.treesitter-context" },
 
     -- import/override with your plugins
     { import = "plugins" },

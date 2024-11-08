@@ -13,6 +13,7 @@ brew "ripgrep"
 
 # languages/tools
 brew "gh"
+brew "git-absorb"
 
 # misc
 brew "grip"
