@@ -3,6 +3,3 @@
 -- Add any additional keymaps here
 
 local map = LazyVim.safe_keymap_set
-
--- make it easier to get back to Explore pane
-map("n", "<leader>pv", vim.cmd.Ex)
