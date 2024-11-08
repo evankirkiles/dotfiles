@@ -1,0 +1,8 @@
+tap "homebrew/cask-fonts"
+
+# editor
+cask "iterm2"
+cask "inconsolata-nerd-font"
+
+# dev environments
+cask "docker"

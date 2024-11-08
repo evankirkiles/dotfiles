@@ -1,0 +1,18 @@
+tap "homebrew/bundle"
+tap "lotyp/homebrew-formulae"
+
+# core/dotfiles
+brew "neovim"
+
+# search/grep/diff
+brew "fd"
+brew "fzf"
+brew "grep"
+brew "psgrep"
+brew "ripgrep"
+
+# languages/tools
+brew "gh"
+
+# misc
+brew "grip"
