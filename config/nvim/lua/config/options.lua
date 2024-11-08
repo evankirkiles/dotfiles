@@ -4,6 +4,3 @@
 
 -- use telescope as the picker
 vim.g.lazyvim_picker = "fzf"
-
--- add in a column at 100 chars by default
-vim.o.colorcolumn = "+1"
