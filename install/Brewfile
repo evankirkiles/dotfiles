@@ -3,6 +3,7 @@ tap "lotyp/homebrew-formulae"
 
 # core/dotfiles
 brew "neovim"
+brew "tmux"
 
 # search/grep/diff
 brew "fd"
@@ -14,6 +15,7 @@ brew "ripgrep"
 # languages/tools
 brew "gh"
 brew "git-absorb"
+brew "go"
 
 # misc
 brew "grip"

@@ -8,6 +8,7 @@ BIN := $(HOMEBREW_PREFIX)/bin
 export XDG_CONFIG_HOME = $(HOME)/.config
 export STOW_DIR = $(DOTFILES_DIR)
 export ACCEPT_EULA=y
+NODE_VERSION := lts/iron
 
 .PHONY: test
 
@@ -21,7 +22,7 @@ linux: core-linux link
 # ===== INSTALLATION =======
 
 # Install core requirements for development
-core-macos: brew nvm zsh git
+core-macos: brew nvm zsh git rustup
 
 core-linux:
 	apt-get update
@@ -29,7 +30,7 @@ core-linux:
 	apt-get dist-upgrade -f
 
 # Installs all third-party packages
-packages: brew-packages rust-packages
+packages: brew-packages cask-apps node-packages rust-packages
 
 # ===== CONFIGURATION =======
 
@@ -67,8 +68,15 @@ unlink: stow-$(OS)
 brew:
 	is-executable brew || curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
 
+# v20.18.0 LTS Node Version
 nvm:
-	is-executable nvm || curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+	is-executable nvm || curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash && \
+	. $(HOME)/.config/nvm/nvm.sh && \
+	nvm install $(NODE_VERSION) && \
+	nvm alias default $(NODE_VERSION)
+
+rustup:
+	is-executable rustup || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash -s -- -y
 
 zsh: brew
 	if ! grep -q zsh $(SHELLS); then \
@@ -87,8 +95,10 @@ cask-apps: brew
 	brew bundle --file=$(DOTFILES_DIR)/install/Caskfile || true
 
 node-packages: nvm
-	$(HOME)/.nvm/nvm.sh use default && \
+	. $(HOME)/.config/nvm/nvm.sh && \
+	nvm use $(NODE_VERSION) && \
 	npm install --force --location global $(shell cat install/npmfile)
 
-rust-packages: brew-packages
+rust-packages: rustup
+	. "$(HOME)/.cargo/env" && \
 	cargo install $(shell cat install/Rustfile)
