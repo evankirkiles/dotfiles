@@ -8,22 +8,11 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 plugins=(git)
 
+# Now activate oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
-# ===== User configuration ====
-
-# Preferred editor for local and remote sessions
-export VISUAL="nvim"
-export EDITOR="nvim"
-
-# Bash aliases
-alias vi="nvim"
-alias vim="nvim"
-
-# ===== Shell Configuration =====
-
 # nvm
-export NVM_DIR="$HOME/.nvm"
+export NVM_DIR="$XDG_CONFIG_HOME/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 # nvm end

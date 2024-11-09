@@ -1,3 +1,13 @@
 # editor
 cask "iterm2"
 cask "font-inconsolata-nerd-font"
+
+# non-Mac App Store things
+cask "shottr"
+cask "rectangle"
+
+# Mac app store apps
+# - To find more, use: mas search <query>
+mas "Bitwarden", id: 1352778147
+mas "Vimari", id: 1480933944
+mas "Are.na for Safari", id: 1497800947

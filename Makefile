@@ -5,10 +5,11 @@ PATH := $(HOMEBREW_PREFIX)/bin:$(DOTFILES_DIR)/bin:$(PATH)
 SHELL := env PATH=$(PATH) /bin/bash
 SHELLS := /private/etc/shells
 BIN := $(HOMEBREW_PREFIX)/bin
+NODE_VERSION := lts/iron
 export XDG_CONFIG_HOME = $(HOME)/.config
 export STOW_DIR = $(DOTFILES_DIR)
 export ACCEPT_EULA=y
-NODE_VERSION := lts/iron
+NVM_DIR := $(XDG_CONFIG_HOME)/nvm
 
 .PHONY: test
 
@@ -70,10 +71,10 @@ brew:
 
 # v20.18.0 LTS Node Version
 nvm:
-	is-executable nvm || curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash && \
-	. $(HOME)/.config/nvm/nvm.sh && \
+	test -f $(NVM_DIR)/nvm.sh || ( curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash && \
+	. $(NVM_DIR)/nvm.sh && \
 	nvm install $(NODE_VERSION) && \
-	nvm alias default $(NODE_VERSION)
+	nvm alias default $(NODE_VERSION) )
 
 rustup:
 	is-executable rustup || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash -s -- -y
@@ -95,7 +96,7 @@ cask-apps: brew
 	brew bundle --file=$(DOTFILES_DIR)/install/Caskfile || true
 
 node-packages: nvm
-	. $(HOME)/.config/nvm/nvm.sh && \
+	. $(NVM_DIR)/nvm.sh && \
 	nvm use $(NODE_VERSION) && \
 	npm install --force --location global $(shell cat install/npmfile)
 

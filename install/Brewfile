@@ -4,6 +4,7 @@ tap "lotyp/homebrew-formulae"
 # core/dotfiles
 brew "neovim"
 brew "tmux"
+brew "mas"
 
 # search/grep/diff
 brew "fd"
@@ -11,10 +12,14 @@ brew "fzf"
 brew "grep"
 brew "psgrep"
 brew "ripgrep"
+brew "gawk"
 
-# languages/tools
+# tooling / source control
 brew "gh"
 brew "git-absorb"
+brew "topgrade"
+
+# languages
 brew "go"
 
 # misc
