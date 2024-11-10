@@ -22,7 +22,7 @@ fi
 PATH="$DOTFILES_DIR/bin:$PATH"
 
 # Source our custom dotfiles (order matters)
-for DOTFILE in "$DOTFILES_DIR"/system/.{path,env,alias}.sh; do
+for DOTFILE in "$DOTFILES_DIR"/system/.{path,env,aliases}.sh; do
   . "$DOTFILE"
 done
 
