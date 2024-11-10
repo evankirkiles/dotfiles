@@ -1,6 +1,3 @@
-# Add any homebrew stuff
-# eval "$(/opt/homebrew/bin/brew shellenv)"
-
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 

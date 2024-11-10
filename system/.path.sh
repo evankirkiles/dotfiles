@@ -1,11 +1,13 @@
+#!/bin/bash
+
 # Start with system path
 is-executable getconf && PATH=$($(command -v getconf) PATH)
 
-export HOMEBREW_PREFIX=$($DOTFILES_DIR/bin/is-supported $DOTFILES_DIR/bin/is-arm64 /opt/homebrew /usr/local)
+HOMEBREW_PREFIX=$("$DOTFILES_DIR"/bin/is-supported "$DOTFILES_DIR"/bin/is-arm64 /opt/homebrew /usr/local)
 
 # Function for easily updating the path, making sure directoy exists
 prepend-path() {
-  [ -d $1 ] && PATH="$1:$PATH"
+  [ -d "$1" ] && PATH="$1:$PATH"
 }
 
 # Now configure the paths
@@ -23,7 +25,8 @@ prepend-path "$HOME/.cargo/bin"
 
 # Remove duplicates (preserving prepended items)
 # Source: http://unix.stackexchange.com/a/40755
-PATH=$(echo -n $PATH | awk -v RS=: '{ if (!arr[$0]++) {printf("%s%s",!ln++?"":":",$0)}}')
+PATH=$(echo -n "$PATH" | awk -v RS=: '{ if (!arr[$0]++) {printf("%s%s",!ln++?"":":",$0)}}')
 
 # Wrap up
+export HOMEBREW_PREFIX
 export PATH

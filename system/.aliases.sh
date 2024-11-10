@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Shortcuts
 alias reload="source ~/.zprofile"
 
@@ -11,8 +13,8 @@ alias functions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
 alias paths='echo -e ${PATH//:/\\n}'
 
 # Miscellaneous
-alias hosts="sudo $EDITOR /etc/hosts"
+alias hosts='sudo $EDITOR /etc/hosts'
 alias quit="exit"
 alias week="date +%V"
 alias speedtest="wget -O /dev/null http://speed.transip.nl/100mb.bin"
-alias grip="grip --browser --pass=$GITHUB_TOKEN"
+alias grip='grip --browser --pass=$GITHUB_TOKEN'

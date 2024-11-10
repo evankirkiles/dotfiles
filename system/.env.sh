@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Preferred editor for local and remote sessions
 export EDITOR="vi"
 export VISUAL="nvim"
@@ -21,6 +23,3 @@ export CLICOLOR=1
 # Prefer US English and use UTF-8
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US"
-
-# Highlight section titles in man pages
-export LESS_TERMCAP_md="${yellow}"
