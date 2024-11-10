@@ -1,6 +1,6 @@
 #!/bin/sh
 
-COMPUTER_NAME="Evan"
+COMPUTER_NAME="evan machine"
 LANGUAGES=(en)
 LOCALE="en_US@currency=USD"
 SCREENSHOTS_FOLDER="${HOME}/Screenshots"
@@ -123,6 +123,9 @@ defaults write com.apple.dock wvous-tl-corner -int 0
 defaults write com.apple.dock wvous-tr-corner -int 0
 defaults write com.apple.dock wvous-bl-corner -int 0
 defaults write com.apple.dock wvous-br-corner -int 0
+
+# ITerm
+defaults write com.googlecode.iterm2 PrefsCustomFolder -string "${XDG_CONFIG_HOME}/iterm2" # set preferences folder to the stow-managed one
 
 # Kill the affected applications to make their changes take effect
 for app in "Address Book" "Calendar" "Contacts" "Dock" "Finder" "Mail" "Safari" "SystemUIServer" "iCal"; do
