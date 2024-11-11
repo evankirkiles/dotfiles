@@ -2,9 +2,13 @@
 cask "iterm2"
 cask "font-inconsolata-nerd-font"
 
-# non-Mac App Store things
+# QoL things
+cask "hammerspoon"
+cask "maccy"
+
+# non-Mac App Store apps
 cask "shottr"
-cask "rectangle"
+cask "spotify"
 
 # Mac app store apps
 # - To find more, use: mas search <query>

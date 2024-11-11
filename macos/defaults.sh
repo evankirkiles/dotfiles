@@ -71,7 +71,6 @@ defaults write com.apple.CrashReporter DialogType -string "none"
 defaults write NSGlobalDomain AppleLanguages -array "${LANGUAGES[@]}"         # Set language as configured above
 defaults write NSGlobalDomain AppleLocale -string "$LOCALE"                   # Set text locale as above
 defaults write NSGlobalDomain AppleFontSmoothing -int 2                       # Enable subpixel font rendering on non-Apple LCDs
-defaults write NSGlobalDomain AppleShowAllExtensions -bool true               # show all filename extensions
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3                      # Enable full keyboard access for all controls
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false            # Disable press-and-hold for keys in favor of key repeat
 defaults write NSGlobalDomain KeyRepeat -int 1                                # Set fast key repeat
@@ -120,7 +119,7 @@ defaults write com.apple.dock launchanim -bool false             # don't animate
 defaults write com.apple.dock autohide -bool true                # automatically hide and show the dock
 defaults write com.apple.dock showhidden -bool true              # make dock icons of hidden applications translucent
 defaults write com.apple.dock no-bouncing -bool true             # no bouncing icons
-defaults write com.Apple.Dock show-recents -bool false           # don't show recently used applications in the Dock
+defaults write com.apple.dock show-recents -bool false           # don't show recently used applications in the Dock
 
 # Disable hot corners
 defaults write com.apple.dock wvous-tl-corner -int 0
@@ -130,6 +129,9 @@ defaults write com.apple.dock wvous-br-corner -int 0
 
 # ITerm
 defaults write com.googlecode.iterm2 PrefsCustomFolder -string "${XDG_CONFIG_HOME}/iterm2" # set preferences folder to the stow-managed one
+
+# Hammerspoon
+defaults write org.hammerspoon.Hammerspoon MJConfigFile "${XDG_CONFIG_HOME}/hammerspoon/init.lua"
 
 # Kill the affected applications to make their changes take effect
 for app in "Address Book" "Calendar" "Contacts" "Dock" "Finder" "Mail" "Safari" "SystemUIServer" "iCal"; do

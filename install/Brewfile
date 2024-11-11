@@ -5,6 +5,7 @@ tap "lotyp/homebrew-formulae"
 brew "neovim"
 brew "tmux"
 brew "mas"
+brew "coreutils"
 
 # search/grep/diff
 brew "fd"
