@@ -10,8 +10,8 @@ local function toggleApplication(name)
 end
 
 -- Hammerspoon bindings for easily opening applications
-hs.hotkey.bind(mash, "u", function() toggleApplication("Messages") end)
-hs.hotkey.bind(mash, "i", function() toggleApplication("iTerm") end)
-hs.hotkey.bind(mash, "o", function() toggleApplication("Safari") end)
-hs.hotkey.bind(mash, "p", function() toggleApplication("System Preferences") end)
-hs.hotkey.bind(mash, "f", function() toggleApplication("Finder") end)
+hs.hotkey.bind(MASH, "u", function() toggleApplication("Messages") end)
+hs.hotkey.bind(MASH, "i", function() toggleApplication("iTerm") end)
+hs.hotkey.bind(MASH, "o", function() toggleApplication("Safari") end)
+hs.hotkey.bind(MASH, "p", function() toggleApplication("System Preferences") end)
+hs.hotkey.bind(MASH, "f", function() toggleApplication("Finder") end)
