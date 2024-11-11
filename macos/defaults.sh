@@ -33,13 +33,22 @@ while true; do
   kill -0 "$$" || exit
 done 2>/dev/null &
 
+# ====== LOGIN ITEMS ===============
+
+# Add these items to open on login
+LOGIN_ITEMS=("Hammerspoon" "Shottr")
+for ITEM in "${LOGIN_ITEMS[@]}"; do
+  PROPERTIES="{ name: \"$ITEM\", path:\"/Applications/$ITEM.app\", hidden:false }"
+  osascript -e "tell application \"System Events\" to make login item at end with properties $PROPERTIES"
+done
+
 # ========== COMPUTER & HOST NAME ==============
 
 # Set computer name
-sudo scutil --set ComputerName "$COMPUTER_NAME"
-sudo scutil --set HostName "$COMPUTER_NAME"
-sudo scutil --set LocalHostName "$COMPUTER_NAME"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$COMPUTER_NAME"
+# sudo scutil --set ComputerName "$COMPUTER_NAME"
+# sudo scutil --set HostName "$COMPUTER_NAME"
+# sudo scutil --set LocalHostName "$COMPUTER_NAME"
+# sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$COMPUTER_NAME"
 
 # ========== LOCALIZATION ==============
 # Using systemsetup might give Error:-99, can be ignored (commands still work)
