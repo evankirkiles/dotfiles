@@ -36,7 +36,19 @@ local function defineLayout(name, key, layout)
 end
 
 --- FLOWS
+
+--- Split screen coding layout
 defineLayout("Code", "return", {
-	{ "Safari", "3,0 3x2", true }, -- Right half
-	{ "iTerm", "0,0 3x2", true }, -- Left half
+	{ "Safari", "3,0 3x4", true }, -- Right half
+	{ "iTerm", "0,0 3x4", true }, -- Left half
+})
+
+--- Full screen Figma design layout
+defineLayout("Design", "]", {
+	{ "Figma", "0,0, 6x4", true },
+})
+
+--- Pops Messages up on top of the screen
+defineLayout("Messaging", "\\", {
+	{ "Messages", "2,1, 2x2", true },
 })
