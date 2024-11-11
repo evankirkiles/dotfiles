@@ -23,6 +23,9 @@ for DOTFILE in "$DOTFILES_DIR"/system/.{path,env,aliases}.sh; do
   . "$DOTFILE"
 done
 
+# Set LSCOLORS
+eval "$(dircolors -b "$DOTFILES_DIR"/system/.dir_colors)"
+
 # Wrap up
 unset CURRENT_SCRIPT SCRIPT_PATH DOTFILE
 export DOTFILES_DIR
