@@ -3,9 +3,10 @@ return {
     "rebelot/kanagawa.nvim",
     lazy = true,
     opts = {
-      theme = "dragon",
+      theme = "wave",
       background = {
-        dark = "dragon",
+        dark = "wave",
+        light = "lotus",
       },
     },
   },

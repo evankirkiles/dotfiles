@@ -18,10 +18,12 @@ brew "gawk"
 # tooling / source control
 brew "gh"
 brew "git-absorb"
-brew "topgrade"
+brew "docker-credential-helper"
+brew "gnupg"
 
 # languages
 brew "go"
 
 # misc
 brew "grip"
+brew "topgrade"

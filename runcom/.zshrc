@@ -1,3 +1,6 @@
+# Source brew's shellenv for completions
+eval "$(brew shellenv)"
+
 # ===== oh-my-zsh begin ==========
 
 # Path to your oh-my-zsh installation.
@@ -33,7 +36,7 @@ fi
 PATH="$DOTFILES_DIR/bin:$PATH"
 
 # Source our custom dotfiles
-for DOTFILE in "$DOTFILES_DIR"/system/.{path,env,aliases,exports,a}.sh; do
+for DOTFILE in "$DOTFILES_DIR"/system/.{path,env,aliases,exports,completions}.sh; do
   if [ -f "$DOTFILE" ]; then
     . "$DOTFILE"
   fi

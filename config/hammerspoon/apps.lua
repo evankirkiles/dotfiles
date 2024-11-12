@@ -3,7 +3,7 @@ local appMaps = {
 	u = "Messages",
 	i = "iTerm",
 	o = "Safari",
-	p = "System Preferences",
+	p = "Slack",
 	f = "Figma",
 }
 
