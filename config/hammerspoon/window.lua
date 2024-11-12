@@ -29,9 +29,7 @@ local function defineLayout(name, key, layout, smallLayout)
 	hs.hotkey.bind(MASH, key, function()
 		hs.alert.show("Layout: " .. name)
 		local targetLayout = layout
-		if smallLayout and hs.screen.mainScreen():name() == "Built-in Retina Display" then
-			targetLayout = smallLayout
-		end
+		if smallLayout and hs.screen.mainScreen():frame().w <= 2000 then targetLayout = smallLayout end
 		for _, app in ipairs(targetLayout) do
 			adjustWindowsOfApp(app[1], app[2])
 			if app[3] then focusIfLaunched(app[1]) end
@@ -45,9 +43,9 @@ end
 defineLayout("Code", "return", {
 	{ "Safari", "3,0 3x4", true }, -- Right half
 	{ "iTerm", "0,0 3x4", true }, -- Left half
-}, { -- Laptop layout
-	{ "Safari", "1,0 5x4", true },
-	{ "iTerm", "0,0 5x4", true },
+}, { -- Small layout
+	{ "Safari", "0,0 6x4", true },
+	{ "iTerm", "0,0 6x4", true },
 })
 
 --- Full screen Figma design layout

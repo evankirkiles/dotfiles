@@ -7,6 +7,7 @@ return {
         "bash",
         "css",
         "diff",
+        "graphql",
         "html",
         "ini",
         "javascript",
