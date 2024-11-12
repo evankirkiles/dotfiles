@@ -15,6 +15,9 @@ return {
       servers = {
         wgsl_analyzer = {},
       },
+      inlay_hints = {
+        enabled = false,
+      },
       setup = {
         rust_analyzer = function()
           return true
