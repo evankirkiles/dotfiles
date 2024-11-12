@@ -32,9 +32,11 @@ fi
 # Make utilities available
 PATH="$DOTFILES_DIR/bin:$PATH"
 
-# Source our custom dotfiles (order matters)
-for DOTFILE in "$DOTFILES_DIR"/system/.{path,env,aliases}.sh; do
-  . "$DOTFILE"
+# Source our custom dotfiles
+for DOTFILE in "$DOTFILES_DIR"/system/.{path,env,aliases,exports,a}.sh; do
+  if [ -f "$DOTFILE" ]; then
+    . "$DOTFILE"
+  fi
 done
 
 # Set LSCOLORS
