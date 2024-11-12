@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Shortcuts
-alias reload="source ~/.zprofile"
+alias reload="source ~/.zshrc"
 
 # Editors
 alias vi="nvim"
