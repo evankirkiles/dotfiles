@@ -26,7 +26,3 @@ export LANG="en_US"
 
 # GPG should use tty
 export GPG_TTY="$(tty)"
-export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
-
-# Source brew's shellenv for completions
-eval "$(brew shellenv)"

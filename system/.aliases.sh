@@ -1,13 +1,11 @@
-#!/bin/bash
-
 # Shortcuts
-alias reload="source ~/.zshrc"
+alias reload="source ~/.zprofile"
 
 # Editors
 alias vi="nvim"
 alias vim="nvim"
 
-# Directory listing/traversal
+# Colorized Directory listing/traversal
 LS_COLORIZED=$(is-supported "ls --color" --color -G)
 LS_TIMESTYLEISO=$(is-supported "ls --time-style=long-iso" --time-style=long-iso)
 LS_GROUPDIRSFIRST=$(is-supported "ls --group-directories-first" --group-directories-first)

@@ -1,0 +1,63 @@
+# SSH Set Up
+
+Source: [wolf99/dotfiles/ssh-setup.md](https://github.com/wolf99/dotfiles/blob/master/ssh-setup.md)
+
+Check GitHub links below first, for any updates to the process
+
+## Create a New SSH Key
+
+Ref: [GitHub help: create key][create-key]
+
+1. Check for existing SSH keys
+
+   ```bash
+   ls -al ~/.ssh
+   ```
+
+2. Generate a new key if there is no suitable existing key. For Github SSH
+   setup, use the email address from your GitHub account; something like <123456+username@users.noreply.github.com>
+
+   ```bash
+   ssh-keygen -t ed25519 -C "your_email@example.com"
+   ```
+
+3. Add the key to your GitHub account: [GitHub help: add a key][add-key]
+
+## Test Pass Phrase
+
+Ref: [StackOverflow: validate passphrase][validate-passphrase]
+
+To check if your pass phrase is correct:
+
+```bash
+ssh-add
+```
+
+## Handling the Pass Phrase
+
+- I have been using the [GitHub recommended][agent-script] script for ssh-agent
+- Previously [ssh-ident][ssh-ident] was useful to manage this
+
+For information on the different options, see: [StackOverflow: run ssh add automatically][auto-ssh-add]
+
+### Setting Up ssh-ident
+
+1. Get the script from GitHub (following assumes `--output-document` path
+   directory is on the PATH)
+
+   ```bash
+   wget --output-document=~/.local/bin/ssh-ident https://raw.githubusercontent.com/ccontavalli/ssh-ident/master/ssh-ident
+   ```
+
+2. Link it in place of `ssh`
+
+   ```bash
+   ln -s ~/.local/bin/ssh-ident ~/.local/bin/ssh
+   ```
+
+[create-key]: https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+[add-key]: https://help.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account
+[validate-passphrase]: https://stackoverflow.com/questions/4411457/how-do-i-verify-check-test-validate-my-ssh-passphrase
+[ssh-ident]: https://github.com/ccontavalli/ssh-ident
+[agent-script]: https://help.github.com/en/github/authenticating-to-github/working-with-ssh-key-passphrases#auto-launching-ssh-agent-on-git-for-windows
+[auto-ssh-add]: https://unix.stackexchange.com/questions/90853/how-can-i-run-ssh-add-automatically-without-a-password-prompt/90869#90869

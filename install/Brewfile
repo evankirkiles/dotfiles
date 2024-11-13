@@ -19,6 +19,7 @@ brew "jq"
 # tooling / source control
 brew "gh"
 brew "git-absorb"
+brew "pinentry-mac"
 brew "docker-credential-helper"
 brew "gnupg"
 brew "magic-wormhole"
