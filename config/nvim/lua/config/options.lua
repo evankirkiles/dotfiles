@@ -4,3 +4,6 @@
 
 -- use telescope as the picker
 vim.g.lazyvim_picker = "fzf"
+
+-- add a colorcolumn at 80
+vim.opt.colorcolumn = "80"

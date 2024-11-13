@@ -23,3 +23,10 @@ export CLICOLOR=1
 # Prefer US English and use UTF-8
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US"
+
+# GPG should use tty
+export GPG_TTY="$(tty)"
+export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
+
+# Source brew's shellenv for completions
+eval "$(brew shellenv)"

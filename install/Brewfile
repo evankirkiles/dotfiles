@@ -27,3 +27,4 @@ brew "go"
 # misc
 brew "grip"
 brew "topgrade"
+brew "task"

@@ -459,6 +459,7 @@ set -sg escape-time 0
 
 # Sort sesions in alpha order
 bind s choose-tree -sZ -O name
+bind w choose-tree -wZ -O name
 
 # Tokyo Night Theme
 #set -g @plugin 'fabioluciano/tmux-tokyo-night'
