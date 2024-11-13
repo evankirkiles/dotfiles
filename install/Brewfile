@@ -14,12 +14,14 @@ brew "grep"
 brew "psgrep"
 brew "ripgrep"
 brew "gawk"
+brew "jq"
 
 # tooling / source control
 brew "gh"
 brew "git-absorb"
 brew "docker-credential-helper"
 brew "gnupg"
+brew "magic-wormhole"
 
 # languages
 brew "go"
