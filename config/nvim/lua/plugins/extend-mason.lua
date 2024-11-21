@@ -8,6 +8,7 @@ return {
         "shfmt",
         "flake8",
         "wgsl-analyzer",
+        "graphql-language-service-cli",
       },
     },
   },
