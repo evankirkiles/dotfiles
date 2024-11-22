@@ -1,0 +1,8 @@
+name: dotfiles
+root: ~/.dotfiles/
+windows:
+  - dotfiles:
+      layout: main-vertical
+      panes:
+        - nvim .
+        -  # empty

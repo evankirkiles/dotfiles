@@ -5,6 +5,9 @@ alias reload="source ~/.zprofile"
 alias vi="nvim"
 alias vim="nvim"
 
+# QoL things
+alias mux="tmuxinator"
+
 # Colorized Directory listing/traversal
 LS_COLORIZED=$(is-supported "ls --color" --color -G)
 LS_TIMESTYLEISO=$(is-supported "ls --time-style=long-iso" --time-style=long-iso)

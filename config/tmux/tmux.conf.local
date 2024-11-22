@@ -452,7 +452,7 @@ set -g @plugin 'caiogondim/maglev'
 set -g @continuum-restore 'on'
 
 # Redraw every second, so seconds update
-set-option -s status-interval 1
+set-option -s status-interval 15
 
 # Removes ESC delay
 set -sg escape-time 0
