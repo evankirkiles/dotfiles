@@ -41,8 +41,8 @@ end
 
 --- Split screen coding layout
 defineLayout("Code", "return", {
-	{ "Safari", "3,0 3x4", true }, -- Right half
-	{ "iTerm", "0,0 3x4", true }, -- Left half
+	{ "Safari", "4,0 2x4", true }, -- Right half
+	{ "iTerm", "0,0 4x4", true }, -- Left half
 }, { -- Small layout
 	{ "Safari", "0,0 6x4", true },
 	{ "iTerm", "0,0 6x4", true },
