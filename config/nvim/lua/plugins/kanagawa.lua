@@ -8,6 +8,15 @@ return {
         dark = "dragon",
         light = "lotus",
       },
+      colors = {
+        theme = {
+          all = {
+            ui = {
+              bg_gutter = "none",
+            },
+          },
+        },
+      },
     },
   },
 }
