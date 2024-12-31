@@ -3,6 +3,7 @@ return {
     "folke/snacks.nvim",
     opts = {
       lazygit = { enabled = false },
+      scroll = { enabled = false },
       terminal = {
         win = {
           height = 0.25,

@@ -9,6 +9,7 @@ return {
       },
       formatters_by_ft = {
         wgsl = { "wgslfmt" },
+        rust = { "rustfmt", lsp_format = "fallback" },
       },
     },
   },
