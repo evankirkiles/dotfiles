@@ -9,10 +9,6 @@ return {
         light = "lotus",
       },
       colors = {
-        palette = {
-          waveBlue1 = "#1b1a24",
-          waveBlue2 = "#302d4a",
-        },
         theme = {
           all = {
             ui = {

@@ -28,3 +28,7 @@ export NVM_DIR="$XDG_CONFIG_HOME/nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 # nvm end
 
+# gvm
+export GVM_DIR="$HOME/.gvm"
+[ -s "$GVM_DIR/scripts/gvm" ] && \. "$GVM_DIR/scripts/gvm"
+# gvm end

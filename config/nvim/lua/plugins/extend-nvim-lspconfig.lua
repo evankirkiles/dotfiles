@@ -15,6 +15,7 @@ return {
       servers = {
         wgsl_analyzer = {},
         graphql = {},
+        cssls = {},
       },
       inlay_hints = {
         enabled = false,

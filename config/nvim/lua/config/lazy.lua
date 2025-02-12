@@ -38,8 +38,8 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.json" },
     { import = "lazyvim.plugins.extras.lang.markdown" },
     { import = "lazyvim.plugins.extras.lang.python" },
+    { import = "lazyvim.plugins.extras.lang.ruby" },
     { import = "lazyvim.plugins.extras.lang.rust" },
-    { import = "lazyvim.plugins.extras.lang.scala" },
     { import = "lazyvim.plugins.extras.lang.typescript" },
     { import = "lazyvim.plugins.extras.lang.terraform" },
     -- linting extras
@@ -49,7 +49,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.ui.treesitter-context" },
 
     -- import local plugins not checked into git
-    -- { import = "plugins/local" },
+    { import = "plugins/local" },
 
     -- import/override with your plugins
     { import = "plugins" },

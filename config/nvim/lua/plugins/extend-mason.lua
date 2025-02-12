@@ -9,6 +9,7 @@ return {
         "flake8",
         "wgsl-analyzer",
         "graphql-language-service-cli",
+        "css-lsp",
       },
     },
   },
