@@ -1,7 +1,7 @@
 -- Application mappings
 local appMaps = {
 	u = "Messages",
-	i = "iTerm",
+	i = "Kitty",
 	o = "Safari",
 	p = "Slack",
 	f = "Figma",

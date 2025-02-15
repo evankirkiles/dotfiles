@@ -2,3 +2,4 @@
 *.lock.json
 system/.custom
 system/.exports
+*.bak

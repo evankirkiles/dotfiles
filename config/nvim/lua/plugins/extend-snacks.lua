@@ -4,11 +4,7 @@ return {
     opts = {
       lazygit = { enabled = false },
       scroll = { enabled = false },
-      terminal = {
-        win = {
-          height = 0.25,
-        },
-      },
+      terminal = { enabled = false },
     },
     keys = {
       -- Override some bindings that expect LazyGit: https://github.com/folke/snacks.nvim?tab=readme-ov-file#-usage

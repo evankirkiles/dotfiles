@@ -128,7 +128,7 @@ tmux_conf_theme_window_bg="default"
 # highlight focused pane, possible values are:
 #   - true
 #   - false (default)
-tmux_conf_theme_highlight_focused_pane=false
+tmux_conf_theme_highlight_focused_pane=true
 
 # focused pane colours:
 tmux_conf_theme_focused_pane_bg="$tmux_conf_theme_colour_2"
@@ -460,10 +460,6 @@ set -sg escape-time 0
 # Sort sesions in alpha order
 bind s choose-tree -sZ -O name
 bind w choose-tree -wZ -O name
-
-# Tokyo Night Theme
-#set -g @plugin 'fabioluciano/tmux-tokyo-night'
-#set -g @theme_plugins 'datetime,weather,playerctl,yay'
 
 # -- custom variables ----------------------------------------------------------
 

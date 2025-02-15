@@ -2,6 +2,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
+      colorscheme = "kanagawa",
       kind_filter = {
         default = {
           "Class",
