@@ -2,7 +2,7 @@
 
 [misc]
 assume_yes = true
-disable = ["containers","git_repos","pnpm","node"]
+disable = ["containers","git_repos","pnpm","node","gem","ruby_gems","asdf"]
 display_time = false
 cleanup = true
 
