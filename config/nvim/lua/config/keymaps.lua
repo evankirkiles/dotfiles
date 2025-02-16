@@ -8,3 +8,5 @@ vim.api.nvim_set_keymap("n", "<C-d>", "<C-d>zz", { noremap = true })
 -- Center the cursor when moving through search results
 vim.api.nvim_set_keymap("n", "n", "nzzzv", { noremap = true })
 vim.api.nvim_set_keymap("n", "N", "Nzzzv", { noremap = true })
+-- Center the cursor when jumping to the end
+vim.api.nvim_set_keymap("n", "G", "Gzz", { noremap = true })

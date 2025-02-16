@@ -25,10 +25,8 @@ brew "docker-credential-helper"
 brew "gnupg"
 brew "magic-wormhole"
 
-# languages
-brew "go"
-
 # misc
 brew "grip"
 brew "topgrade"
 brew "task"
+brew "viu"

@@ -3,9 +3,8 @@ return {
     "akinsho/bufferline.nvim",
     opts = {
       options = {
-        separator_style = "slant",
-        show_close_icon = true,
-        show_tab_indicators = false,
+        show_close_icon = false,
+        show_tab_indicators = true,
         auto_toggle_bufferline = true,
       },
     },

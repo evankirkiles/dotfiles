@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Preferred editor for local and remote sessions
-export EDITOR="vi"
+export EDITOR="nvim"
 export VISUAL="nvim"
 
 # XDG Base Directory Specification (https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html)

@@ -5,8 +5,10 @@ alias reload="source ~/.zprofile; source ~/.zshrc"
 alias vi="nvim"
 alias vim="nvim"
 
-# QoL things
+# TMux(inator)?
 alias mux="tmuxinator"
+alias tm="tmux"
+alias tma="tmux attach-session"
 
 # Colorized Directory listing/traversal
 LS_COLORIZED=$(is-supported "ls --color" --color -G)
