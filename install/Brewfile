@@ -16,6 +16,7 @@ brew "psgrep"
 brew "ripgrep"
 brew "gawk"
 brew "jq"
+brew "zoxide"
 
 # tooling / source control
 brew "gh"

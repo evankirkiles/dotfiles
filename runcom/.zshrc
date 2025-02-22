@@ -32,3 +32,6 @@ export NVM_DIR="$XDG_CONFIG_HOME/nvm"
 export GVM_DIR="$HOME/.gvm"
 [ -s "$GVM_DIR/scripts/gvm" ] && \. "$GVM_DIR/scripts/gvm"
 # gvm end
+
+# zoxide
+eval "$(zoxide init zsh)"
