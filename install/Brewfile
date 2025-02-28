@@ -27,7 +27,5 @@ brew "gnupg"
 brew "magic-wormhole"
 
 # misc
-brew "grip"
 brew "topgrade"
-brew "task"
 brew "viu"

@@ -16,6 +16,7 @@ return {
         wgsl_analyzer = {},
         graphql = {},
         cssls = {},
+        clojure_lsp = {},
       },
       inlay_hints = {
         enabled = false,
