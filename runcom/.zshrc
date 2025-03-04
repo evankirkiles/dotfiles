@@ -16,7 +16,7 @@ source $ZSH/oh-my-zsh.sh
 # ==== end oh-my-zsh ============
 
 # Source our custom dotfiles that aren't saved in the environment
-for DOTFILE in "$DOTFILES_DIR"/system/.{aliases,completions}.sh; do
+for DOTFILE in "$DOTFILES_DIR"/system/.{aliases,completions,localrc}.sh; do
   if [ -f "$DOTFILE" ]; then
     . "$DOTFILE"
   fi
