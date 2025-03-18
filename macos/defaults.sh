@@ -36,7 +36,7 @@ done 2>/dev/null &
 # ====== LOGIN ITEMS ===============
 
 # Add these items to open on login
-LOGIN_ITEMS=("Hammerspoon" "Shottr")
+LOGIN_ITEMS=("Hammerspoon" "Karabiner-Elements" "Shottr")
 for ITEM in "${LOGIN_ITEMS[@]}"; do
   PROPERTIES="{ name: \"$ITEM\", path:\"/Applications/$ITEM.app\", hidden:false }"
   osascript -e "tell application \"System Events\" to make login item at end with properties $PROPERTIES"

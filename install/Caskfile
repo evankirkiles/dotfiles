@@ -5,6 +5,7 @@ cask "font-inconsolata-nerd-font"
 # QoL things
 cask "hammerspoon"
 cask "maccy"
+cask "karabiner-elements"
 
 # non-Mac App Store apps
 cask "shottr"

@@ -4,7 +4,7 @@ return {
     event = "VeryLazy",
     opts = {
       mode = "topline",
-      max_lines = 3,
+      max_lines = 15,
     },
   },
 }
