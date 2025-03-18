@@ -9,6 +9,7 @@ alias vim="nvim"
 alias mux="tmuxinator"
 alias tm="tmux"
 alias tma="tmux attach-session"
+alias sdf="tmux attach-session"
 
 # Colorized Directory listing/traversal
 LS_COLORIZED=$(is-supported "ls --color" --color -G)
