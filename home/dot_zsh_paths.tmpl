@@ -1,28 +1,28 @@
-# Determine the homebrew prefix
-HOMEBREW_PREFIX={{ if eq .chezmoi.os "darwin" }}/opt/homebrew{{ else }}HOMEBREW_PREFIX=/usr/local{{ end }}
-
 # Function for easily updating the path, making sure directoy exists
 prepend-path() {
   [ -d "$1" ] && PATH="$1:$PATH"
 }
 
+{{ if ne .chezmoi.os "windows" -}}
 prepend-path "/bin"
 prepend-path "/sbin"
 prepend-path "/usr/bin"
 prepend-path "/usr/sbin"
 prepend-path "/usr/local/bin"
 prepend-path "/usr/local/sbin"
+{{- end }}
+
+{{ if eq .chezmoi.os "darwin" -}}
+HOMEBREW_PREFIX=/opt/homebrew # assumes arm64, should be correct though
 prepend-path "$HOMEBREW_PREFIX/bin"
 prepend-path "$HOMEBREW_PREFIX/sbin"
 prepend-path "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin"
 prepend-path "$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin"
 prepend-path "$HOMEBREW_PREFIX/opt/grep/libexec/gnubin"
-prepend-path "$HOME/.cargo/bin"
+export HOMEBREW_PREFIX
+{{- end }}
 
 # Remove duplicates (preserving prepended items)
 # Source: http://unix.stackexchange.com/a/40755
 PATH=$(echo -n "$PATH" | awk -v RS=: '{ if (!arr[$0]++) {printf("%s%s",!ln++?"":":",$0)}}')
-
-# Wrap up
-export HOMEBREW_PREFIX
 export PATH
