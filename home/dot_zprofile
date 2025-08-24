@@ -3,6 +3,7 @@
 
 # GPG should use tty
 export GPG_TTY="$(tty)"
+export TMUX_PLUGIN_MANAGER_PATH="$XDG_CONFIG_HOME/tmux/plugins/"
 
 # Source custom dotfiles
 for DOTFILE in ~/.zsh_{paths,exports}; do

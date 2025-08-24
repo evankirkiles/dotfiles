@@ -1,0 +1,18 @@
+name: dotfiles
+root: ~/
+windows:
+  - chezmoi:
+      layout: main-vertical
+      panes:
+        - cd ~/.local/share/chezmoi && chezmoi edit
+        -  # empty
+  - home:
+      layout: main-vertical
+      panes:
+        - cd ~/.config && nvim .
+        -  # empty
+  - legacy:
+      layout: main-vertical
+      panes:
+        - cd .dotfiles
+        -  # empty

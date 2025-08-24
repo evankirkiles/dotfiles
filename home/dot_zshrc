@@ -9,11 +9,12 @@ source $ZSH/oh-my-zsh.sh
 # ==== end oh-my-zsh ============
 
 # Source custom dotfiles not in environment
-for DOTFILE in ~/.zsh_{aliases,localrc}; do
-  if [ -f "$DOTFILE" ]; then
-    . "$DOTFILE"
-  fi
-done
+source ~/.zsh_aliases
+
+# Load private additions if they exist
+if [[ -f "${HOME}/.zshrc.local" ]]; then
+  source "${HOME}/.zshrc.local"
+fi
 
 # nvm
 export NVM_DIR="$XDG_CONFIG_HOME/nvm"

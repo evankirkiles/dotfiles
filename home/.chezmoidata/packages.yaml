@@ -27,6 +27,7 @@ packages:
       - "gnupg"
       - "magic-wormhole"
       - "topgrade"
+      - "bitwarden-cli"
     casks:
       - "kitty"
       - "font-inconsolata-nerd-font"

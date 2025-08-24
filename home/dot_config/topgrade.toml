@@ -9,6 +9,7 @@ disable = [
   "gem",
   "ruby_gems",
   "asdf",
+  "oh-my-zsh",  # managed by chez moi
 ]
 display_time = false
 cleanup = true
