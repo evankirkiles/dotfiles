@@ -5,14 +5,14 @@
 export GPG_TTY="$(tty)"
 export TMUX_PLUGIN_MANAGER_PATH="$XDG_CONFIG_HOME/tmux/plugins/"
 
-# Source custom dotfiles
-for DOTFILE in ~/.zsh_{paths,exports}; do
-  if [ -f "$DOTFILE" ]; then
-    . "$DOTFILE"
-  fi
-done
-unset DOTFILE
+# Source any env files split off from zprofile
+source ~/.zsh_paths
 
-# Source env variables from any programs
-eval "$(brew shellenv)"
+# Load private additions if they exist
+if [[ -f "${HOME}/.zprofile.local" ]]; then
+  source "${HOME}/.zprofile.local"
+fi
+
+# Source env variables from programs
 eval "$(dircolors -b "$HOME"/.dircolors)"
+eval "$(brew shellenv)"

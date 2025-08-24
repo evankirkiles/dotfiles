@@ -8,7 +8,7 @@ source $ZSH/oh-my-zsh.sh
 
 # ==== end oh-my-zsh ============
 
-# Source custom dotfiles not in environment
+# Source any env files split off from zshrc
 source ~/.zsh_aliases
 
 # Load private additions if they exist
@@ -16,16 +16,3 @@ if [[ -f "${HOME}/.zshrc.local" ]]; then
   source "${HOME}/.zshrc.local"
 fi
 
-# nvm
-export NVM_DIR="$XDG_CONFIG_HOME/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
-# nvm end
-
-# pnpm
-export PNPM_HOME="$HOME/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
