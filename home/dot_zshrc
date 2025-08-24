@@ -1,0 +1,30 @@
+# ===== oh-my-zsh begin ==========
+
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="robbyrussell"
+DISABLE_AUTO_UPDATE="true"
+plugins=(git)
+source $ZSH/oh-my-zsh.sh
+
+# ==== end oh-my-zsh ============
+
+# Source custom dotfiles not in environment
+for DOTFILE in ~/.zsh_{aliases,localrc}; do
+  if [ -f "$DOTFILE" ]; then
+    . "$DOTFILE"
+  fi
+done
+
+# nvm
+export NVM_DIR="$XDG_CONFIG_HOME/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+# nvm end
+
+# pnpm
+export PNPM_HOME="$HOME/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

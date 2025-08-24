@@ -1,0 +1,17 @@
+# Use ~/.zprofile to set the PATH and EDITOR environment variables.
+# And anything else that only needs to be set once on login.
+
+# GPG should use tty
+export GPG_TTY="$(tty)"
+
+# Source custom dotfiles
+for DOTFILE in ~/.zsh_{paths,exports}; do
+  if [ -f "$DOTFILE" ]; then
+    . "$DOTFILE"
+  fi
+done
+unset DOTFILE
+
+# Source env variables from any programs
+eval "$(brew shellenv)"
+eval "$(dircolors -b "$HOME"/.dircolors)"

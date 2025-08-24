@@ -1,0 +1,37 @@
+packages:
+  darwin:
+    taps:
+      - "homebrew/bundle"
+      - "lotyp/homebrew-formulae"
+    brews:
+      - "git"
+      # core/dotfiles
+      - "neovim"
+      - "tmux"
+      - "tmuxinator"
+      - "mas"
+      - "coreutils"
+      # search/grep/diff
+      - "fd"
+      - "fzf"
+      - "grep"
+      - "psgrep"
+      - "ripgrep"
+      - "gawk"
+      - "jq"
+      # tooling / source control
+      - "gh"
+      - "git-absorb"
+      - "pinentry-mac"
+      - "docker-credential-helper"
+      - "gnupg"
+      - "magic-wormhole"
+      - "topgrade"
+    casks:
+      - "kitty"
+      - "font-inconsolata-nerd-font"
+      - "hammerspoon"
+      - "karabiner-elements"
+    mas:
+      - name: "Bitwarden"
+        id: 1352778147

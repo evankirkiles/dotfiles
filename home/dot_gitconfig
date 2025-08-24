@@ -1,0 +1,19 @@
+[user]
+  name = Evan Kirkiles
+	email = kirkilese@gmail.com
+	signingkey = 6E3164057EF9587F
+[init]
+	defaultBranch = main
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+[credential]
+  helper = GIT_CREDENTIAL_HELPER
+[commit]
+	gpgsign = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[url "git@github.com:"]
+	insteadOf = https://github.com/

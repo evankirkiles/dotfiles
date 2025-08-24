@@ -1,0 +1,36 @@
+# Shortcuts
+alias reload="source ~/.zshenv; source ~/.zprofile; source ~/.zshrc"
+
+# Editors
+alias vi="nvim"
+alias vim="nvim"
+
+# TMux(inator)?
+alias mux="tmuxinator"
+alias tm="tmux"
+alias tma="tmux attach-session"
+alias sdf="tmux attach-session"
+
+# Colorized Directory listing/traversal
+LS_COLORIZED=$("$HOME"/bin/is-supported "ls --color" --color -G)
+LS_TIMESTYLEISO=$("$HOME"/bin/is-supported "ls --time-style=long-iso" --time-style=long-iso)
+LS_GROUPDIRSFIRST=$("$HOME"/bin/is-supported "ls --group-directories-first" --group-directories-first)
+alias ls="ls $LS_COLORIZED"
+alias l="ls -lahA $LS_TIMESTYLEISO $LS_GROUPDIRSFIRST"
+alias ll="ls -lA"
+alias lt="ls -lhAtr $LS_TIMESTYLEISO $LS_GROUPDIRSFIRST"
+alias ld="ls -ld */"
+alias lp="stat -c '%a %n' *"
+
+# List declared aliases, functions, paths
+alias aliases="alias | sed 's/=.*//'"
+alias functions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
+alias paths='echo -e ${PATH//:/\\n}'
+
+# Miscellaneous
+alias mdo='make dev/off && make dev/on'
+alias hosts='$EDITOR /etc/hosts'
+alias quit="exit"
+alias week="date +%V"
+alias speedtest="wget -O /dev/null http://speed.transip.nl/100mb.bin"
+alias grip='grip --browser --pass=$GITHUB_TOKEN'
