@@ -3,7 +3,7 @@
 Managed by Chezmoi. Should be simple enough to use:
 
 ```shell
-chezmoi init evankirkiles
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply evankirkiles
 ```
 
 ### Useful Commands
