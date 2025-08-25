@@ -1,4 +1,5 @@
 return {
+  -- General LSP configuration
   {
     "neovim/nvim-lspconfig",
     opts = {
@@ -28,4 +29,21 @@ return {
       },
     },
   },
+  -- Installer for additional language server binaries
+  {
+    "williamboman/mason.nvim",
+    opts = {
+      ensure_installed = {
+        "stylua",
+        "shellcheck",
+        "shfmt",
+        "flake8",
+        "wgsl-analyzer",
+        "graphql-language-service-cli",
+        "css-lsp",
+      },
+    },
+  },
+  -- Kitty configuration file integration
+  { "fladson/vim-kitty", ft = "kitty", lazy = true },
 }
