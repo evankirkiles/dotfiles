@@ -28,6 +28,7 @@ alias functions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
 alias paths='echo -e ${PATH//:/\\n}'
 
 # Miscellaneous
+alias c="clear"
 alias mdo='make dev/off && make dev/on'
 alias hosts='$EDITOR /etc/hosts'
 alias quit="exit"
