@@ -15,4 +15,6 @@ fi
 
 # Source env variables from programs
 eval "$(dircolors -b "$HOME"/.dircolors)"
+{{ if eq .chezmoi.os "darwin" -}}
 eval "$(brew shellenv)"
+{{- end }}
