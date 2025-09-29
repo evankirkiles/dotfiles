@@ -4,6 +4,7 @@ alias reload="source ~/.zshenv; source ~/.zprofile; source ~/.zshrc"
 # Editors
 alias vi="nvim"
 alias vim="nvim"
+alias nv="nvim ."
 
 # TMux(inator)?
 alias mux="tmuxinator"

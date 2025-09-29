@@ -31,7 +31,7 @@ return {
   },
   -- Installer for additional language server binaries
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = {
       ensure_installed = {
         "stylua",
