@@ -46,4 +46,23 @@ return {
   },
   -- Kitty configuration file integration
   { "fladson/vim-kitty", ft = "kitty", lazy = true },
+  -- Rust LSP configuration
+  {
+    "mrcjkb/rustaceanvim",
+    version = "^5",
+    lazy = false,
+    config = function()
+      vim.g.rustaceanvim = {
+        server = {
+          settings = {
+            ["rust-analyzer"] = {
+              procMacro = {
+                enable = true,
+              },
+            },
+          },
+        },
+      }
+    end,
+  },
 }
