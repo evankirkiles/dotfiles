@@ -2,6 +2,7 @@ local HOME = os.getenv("HOME")
 
 return {
   -- Syntax highlighting
+  -- If highlights.scm becomes broken: `:TSUninstall vim`
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)

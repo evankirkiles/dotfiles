@@ -18,6 +18,18 @@ return {
         graphql = {},
         cssls = {},
         clojure_lsp = {},
+        tailwindcss = {
+          settings = {
+            tailwindCSS = {
+              classFunctions = {
+                "tw",
+                "clsx",
+                "cx",
+                "cva",
+              },
+            },
+          },
+        },
       },
       inlay_hints = {
         enabled = false,
