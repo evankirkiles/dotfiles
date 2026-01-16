@@ -1,5 +1,6 @@
 # Shortcuts
 alias reload="source ~/.zshenv; source ~/.zprofile; source ~/.zshrc"
+alias uuid="uuidgen | tr '[:upper:]' '[:lower:]'"
 
 # Editors
 alias vi="nvim"
