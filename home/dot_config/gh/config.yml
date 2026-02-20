@@ -11,6 +11,8 @@ pager:
 # Aliases allow you to create nicknames for gh commands
 aliases:
   co: pr checkout
+  my-prs: '!gh search prs --author=@me --state=open --json number,title,repository,url --jq ".[] | \"\(.url)\t\(.number)\t\(.title)\t[\(.repository.nameWithOwner)]\"" | fzf --height 40% --reverse --header "Select a PR to open" --with-nth=2.. | cut -f1 | xargs open'
+  review-prs: '!gh search prs --review-requested=@me --state=open --json number,title,repository,url --jq ".[] | \"\(.url)\t\(.number)\t\(.title)\t[\(.repository.nameWithOwner)]\"" | fzf --height 40% --reverse --header "Select a PR to review" --with-nth=2.. | cut -f1 | xargs open'
 # The path to a unix socket through which send HTTP connections. If blank, HTTP traffic will be handled by net/http.DefaultTransport.
 http_unix_socket:
 # What web browser gh should use when opening URLs. If blank, will refer to environment.

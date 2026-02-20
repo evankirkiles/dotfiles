@@ -11,6 +11,7 @@ prepend-path "/usr/sbin"
 prepend-path "/usr/local/bin"
 prepend-path "/usr/local/sbin"
 prepend-path "$HOME/.cargo/bin"
+prepend-path "$HOME/.local/bin"
 {{- end }}
 
 {{ if eq .chezmoi.os "darwin" -}}
