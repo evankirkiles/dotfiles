@@ -54,6 +54,7 @@ return {
         },
       },
       formatters_by_ft = {
+        markdown = { "prettier" },
         wgsl = { "wgslfmt" },
         rust = { "rustfmt", lsp_format = "fallback" },
       },

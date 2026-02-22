@@ -6,6 +6,7 @@ return {
       lazygit = { enabled = false },
       scroll = { enabled = false },
       terminal = { enabled = false },
+      scratch = { ft = "markdown" },
     },
     keys = {
       -- Override some bindings that expect LazyGit: https://github.com/folke/snacks.nvim?tab=readme-ov-file#-usage
