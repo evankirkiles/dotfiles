@@ -1,4 +1,14 @@
 return {
+  -- Code symbols outline pane (<leader>cs)
+  {
+    "stevearc/aerial.nvim",
+    opts = {
+      layout = {
+        default_direction = "right",
+        min_width = 40,
+      },
+    },
+  },
   -- Modify some defaults of LazyVim / snacks
   {
     "folke/snacks.nvim",
