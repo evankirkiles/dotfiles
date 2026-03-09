@@ -38,6 +38,14 @@ return {
         rust_analyzer = function()
           return true
         end,
+        eslint = function()
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            pattern = { "*.ts", "*.tsx", "*.js", "*.jsx" },
+            callback = function()
+              vim.cmd("LspEslintFixAll")
+            end,
+          })
+        end,
       },
     },
   },
