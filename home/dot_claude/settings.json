@@ -24,14 +24,13 @@
     "jira": {
       "type": "stdio",
       "command": "uvx",
-      "args": [
-        "mcp-atlassian"
-      ],
+      "args": ["mcp-atlassian"],
       "env": {
         "JIRA_SERVER_URL": "${JIRA_SERVER_URL}",
         "JIRA_USERNAME": "${JIRA_USERNAME}",
         "JIRA_API_TOKEN": "${JIRA_API_TOKEN}"
       }
     }
-  }
+  },
+  "model": "opus[1m]"
 }
