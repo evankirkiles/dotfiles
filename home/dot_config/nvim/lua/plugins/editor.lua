@@ -9,6 +9,16 @@ return {
       },
     },
   },
+  {
+    "folke/noice.nvim",
+    opts = {
+      lsp = {
+        hover = {
+          silent = true,
+        },
+      },
+    },
+  },
   -- Modify some defaults of LazyVim / snacks
   {
     "folke/snacks.nvim",
