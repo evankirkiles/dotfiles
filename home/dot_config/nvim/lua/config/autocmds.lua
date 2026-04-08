@@ -24,3 +24,11 @@ vim.api.nvim_create_autocmd("User", {
     require("lazyvim.util").root.get = vim.loop.cwd
   end,
 })
+
+-- Use a transparent background, so tmux can determine the color
+vim.api.nvim_create_autocmd("ColorScheme", {
+  callback = function()
+    vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
+    vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE" })
+  end,
+})
