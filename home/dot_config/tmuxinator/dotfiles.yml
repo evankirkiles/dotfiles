@@ -6,11 +6,6 @@ windows:
       panes:
         - cd ~/.local/share/chezmoi && chezmoi edit
         -  # empty
-  - notes:
-      layout: main-vertical
-      panes:
-        - cd ~/Notes && nvim .
-        -  # empty
   - home:
       layout: main-vertical
       panes:

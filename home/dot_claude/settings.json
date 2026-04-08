@@ -1,16 +1,4 @@
 {
-  "enabledPlugins": {
-    "nyt-jira@nytimes-claude-code-marketplace": true,
-    "nyt-drone@nytimes-claude-code-marketplace": true,
-    "nyt-agent@nytimes-claude-code-marketplace": true,
-    "nyt-golang@nytimes-claude-code-marketplace": true,
-    "nyt-typescript@nytimes-claude-code-marketplace": true,
-    "nyt-command@nytimes-claude-code-marketplace": true,
-    "nyt-skill@nytimes-claude-code-marketplace": true,
-    "nyt-flow@nytimes-claude-code-marketplace": true,
-    "nyt-bug@nytimes-claude-code-marketplace": true,
-    "nyt-logbook@nytimes-claude-code-marketplace": true
-  },
   "alwaysThinkingEnabled": true,
   "effortLevel": "medium",
   "mcpServers": {
@@ -19,16 +7,6 @@
       "url": "https://api.githubcopilot.com/mcp/",
       "headers": {
         "Authorization": "Bearer ${GITHUB_PAT}"
-      }
-    },
-    "jira": {
-      "type": "stdio",
-      "command": "uvx",
-      "args": ["mcp-atlassian"],
-      "env": {
-        "JIRA_SERVER_URL": "${JIRA_SERVER_URL}",
-        "JIRA_USERNAME": "${JIRA_USERNAME}",
-        "JIRA_API_TOKEN": "${JIRA_API_TOKEN}"
       }
     }
   },
