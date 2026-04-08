@@ -79,7 +79,16 @@ return {
       },
     },
   },
-  -- Fuzzy finding / search
-  { "junegunn/fzf", build = "./install --bin" },
-  { "fzf-lua" },
+  -- Claude integration
+  {
+    "coder/claudecode.nvim",
+    opts = {
+      diff_opts = {
+        open_in_new_tab = true,
+      },
+      terminal = {
+        provider = "none", -- no UI actions; server + tools remain available
+      },
+    },
+  },
 }

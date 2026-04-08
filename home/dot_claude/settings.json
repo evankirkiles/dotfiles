@@ -1,6 +1,11 @@
 {
   "alwaysThinkingEnabled": true,
   "effortLevel": "medium",
+  "voiceEnabled": true,
+  "voice": {
+    "enabled": true,
+    "mode": "hold"
+  },
   "mcpServers": {
     "github": {
       "type": "http",
@@ -9,6 +14,5 @@
         "Authorization": "Bearer ${GITHUB_PAT}"
       }
     }
-  },
-  "model": "opus[1m]"
+  }
 }
