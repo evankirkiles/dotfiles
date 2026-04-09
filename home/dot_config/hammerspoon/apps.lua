@@ -1,6 +1,6 @@
 -- Application mappings
 local appMaps = {
-	u = "Messages",
+	u = "Bitwarden",
 	i = "Kitty",
 	o = "Google Chrome",
 	p = "Slack",
