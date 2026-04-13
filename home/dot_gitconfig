@@ -4,6 +4,8 @@
 	signingkey = 6E3164057EF9587F
 [init]
 	defaultBranch = main
+[pull]
+	rebase = true
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
 [credential]
