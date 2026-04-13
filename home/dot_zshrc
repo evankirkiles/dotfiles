@@ -16,10 +16,10 @@ plugins=(
 )
 source $ZSH/oh-my-zsh.sh
 
-# Show user@host in prompt when in an SSH session
-# if [[ -n "$SSH_CONNECTION" ]]; then
+# Show user@host in prompt only when in an SSH session
+if [[ -n "$SSH_CONNECTION" ]]; then
   PROMPT="%(?:%{$fg_bold[green]%}%1{➜%} :%{$fg_bold[red]%}%1{➜%} )%{$fg[white]%}[%n@%m]%{$reset_color%} %{$fg[cyan]%}%c%{$reset_color%} \$(git_prompt_info)"
-# fi
+fi
 
 # ==== end oh-my-zsh ============
 
