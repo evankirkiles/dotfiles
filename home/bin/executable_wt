@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  echo "Usage: wt <branch> [path]"
+  echo ""
+  echo "Creates a git worktree for <branch> and opens it in a new tmux window"
+  echo "with a main pane on the left and two stacked panes on the right."
+  echo ""
+  echo "  branch   Existing branch to check out, or name for a new branch"
+  echo "  path     Worktree path (default: ../repo-branch)"
+}
+
+branch="${1:-}"
+if [[ -z "$branch" ]]; then
+  usage
+  exit 1
+fi
+
+repo_root="$(git rev-parse --show-toplevel 2>/dev/null)" || {
+  echo "Error: not in a git repo"
+  exit 1
+}
+repo_name="$(basename "$repo_root")"
+wt_path="${2:-${repo_root}/../${repo_name}-${branch}}"
+
+# Check out existing branch or create a new one
+if ! git worktree add "$wt_path" "$branch" 2>/dev/null; then
+  git worktree add -b "$branch" "$wt_path"
+fi
+
+abs_path="$(cd "$wt_path" && pwd)"
+window_name="${repo_name}:${branch}"
+
+# Open a new tmux window rooted at the worktree
+tmux new-window -n "$window_name" -c "$abs_path"
+# Split right half
+tmux split-window -h -c "$abs_path"
+# Split the right pane top/bottom
+tmux split-window -v -c "$abs_path"
+# Focus the left "main" pane
+tmux select-pane -t 0
