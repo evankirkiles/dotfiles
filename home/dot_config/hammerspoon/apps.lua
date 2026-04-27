@@ -2,7 +2,7 @@
 local appMaps = {
 	u = "Bitwarden",
 	i = "Kitty",
-	o = "Google Chrome",
+	o = "Safari",
 	p = "Slack",
 	f = "Figma",
 }

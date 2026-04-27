@@ -127,7 +127,7 @@ defaults write com.apple.dock wvous-tr-corner -int 0
 defaults write com.apple.dock wvous-bl-corner -int 0
 defaults write com.apple.dock wvous-br-corner -int 0
 
-# Use XDG_CONFIG_HOME for: ITerm, HammerSpoon
+# Use XDG_CONFIG_HOME for: HammerSpoon
 defaults write org.hammerspoon.Hammerspoon MJConfigFile "${XDG_CONFIG_HOME}/hammerspoon/init.lua"
 
 # Kill the affected applications to make their changes take effect

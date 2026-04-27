@@ -1,7 +1,6 @@
 packages:
   darwin:
     taps:
-      - "homebrew/bundle"
       - "lotyp/homebrew-formulae"
     brews:
       - "git"
