@@ -59,6 +59,7 @@ return {
         "shfmt",
         "flake8",
         "wgsl-analyzer",
+        "rust-analyzer",
         "graphql-language-service-cli",
         "css-lsp",
       },
