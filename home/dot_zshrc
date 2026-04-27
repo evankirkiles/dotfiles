@@ -7,7 +7,6 @@ plugins=(
   git
   ssh
   gh
-  zoxide
   vi-mode
   chezmoi
   fzf
