@@ -29,6 +29,7 @@ packages:
       - "font-inconsolata-nerd-font"
       - "hammerspoon"
       - "karabiner-elements"
+      - "shottr"
     mas:
       - name: "Bitwarden"
         id: 1352778147
