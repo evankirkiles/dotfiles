@@ -6,8 +6,8 @@ windows:
       panes:
         - cd ~/.local/share/chezmoi && chezmoi edit
         -  # empty
-  - home:
+  - config:
       layout: main-vertical
       panes:
-        - cd ~/.config && nvim .
+        - cd ~/.config/chezmoi && nvim ./chezmoi.toml
         -  # empty

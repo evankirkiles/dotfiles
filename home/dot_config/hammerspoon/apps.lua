@@ -5,6 +5,7 @@ local appMaps = {
 	o = "Safari",
 	p = "Slack",
 	f = "Figma",
+	n = "Notion Dev",
 }
 
 -- Allow opening apps using above keybinds

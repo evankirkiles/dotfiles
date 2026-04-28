@@ -1,13 +1,11 @@
 [user]
-  name = Evan Kirkiles
-	email = kirkilese@gmail.com
+	name = Evan Kirkiles
+	email = {{ .email | default "kirkilese@gmail.com" }}
 	signingkey = 6E3164057EF9587F
 [init]
 	defaultBranch = main
 [pull]
 	rebase = true
-[url "ssh://git@github.com/"]
-	insteadOf = https://github.com/
 [credential]
   helper = GIT_CREDENTIAL_HELPER
 [commit]
@@ -17,5 +15,7 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
 [url "git@github.com:"]
 	insteadOf = https://github.com/
