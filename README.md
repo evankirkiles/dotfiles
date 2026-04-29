@@ -1,5 +1,7 @@
 # evan dotfiles
 
+test
+
 Managed by [chezmoi](https://chezmoi.io). Bootstrap a fresh macOS or Linux
 machine with one command:
 
