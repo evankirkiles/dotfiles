@@ -8,13 +8,11 @@
 {{- $hostname := promptStringOnce . "hostname" "Hostname for the computer" $hostname -}}
 {{- $languageChoices := list "frontend" "rust" "python" "go" -}}
 {{- $languages := promptMultichoiceOnce . "languages" "Language ecosystems used on this computer" $languageChoices $languageChoices -}}
-{{- $useHttps := promptBoolOnce . "useHttps" "Use HTTPS instead of SSH for git remotes" false -}}
 
 [data]
     email = {{ $email | quote }}
     hostname = {{ $hostname | quote }}
     languages = [{{ range $i, $lang := $languages }}{{ if $i }}, {{ end }}{{ $lang | quote }}{{ end }}]
-    useHttps = {{ $useHttps }}
 
 [github]
     refreshPeriod = "12h"

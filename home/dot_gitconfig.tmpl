@@ -4,6 +4,8 @@
 	signingkey = ~/.ssh/signing_ed25519.pub
 [init]
 	defaultBranch = main
+[push]
+	autoSetupRemote = true
 [pull]
 	rebase = true
 [commit]
@@ -17,9 +19,7 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-{{- if not (dig "useHttps" false .) }}
-[url "ssh://git@github.com/"]
-	insteadOf = https://github.com/
-[url "git@github.com:"]
-	insteadOf = https://github.com/
-{{- end }}
+[credential "https://github.com"]
+	helper = !gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = !gh auth git-credential
