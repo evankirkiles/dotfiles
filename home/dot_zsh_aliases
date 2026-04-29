@@ -12,9 +12,9 @@ alias tma="tmux attach-session"
 alias sdf="tmux attach-session"
 
 # Colorized Directory listing/traversal
-LS_COLORIZED=$("$HOME"/bin/is-supported "ls --color" --color -G)
-LS_TIMESTYLEISO=$("$HOME"/bin/is-supported "ls --time-style=long-iso" --time-style=long-iso)
-LS_GROUPDIRSFIRST=$("$HOME"/bin/is-supported "ls --group-directories-first" --group-directories-first)
+LS_COLORIZED=$("$HOME"/.local/bin/is-supported "ls --color" --color -G)
+LS_TIMESTYLEISO=$("$HOME"/.local/bin/is-supported "ls --time-style=long-iso" --time-style=long-iso)
+LS_GROUPDIRSFIRST=$("$HOME"/.local/bin/is-supported "ls --group-directories-first" --group-directories-first)
 alias ls="ls $LS_COLORIZED"
 alias l="ls -lahA $LS_TIMESTYLEISO $LS_GROUPDIRSFIRST"
 alias ll="ls -lA"

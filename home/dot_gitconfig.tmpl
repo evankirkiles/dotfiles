@@ -17,7 +17,9 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+{{- if not (dig "useHttps" false .) }}
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+{{- end }}

@@ -1,18 +1,20 @@
 {{/* work around unreliable hostname on darwin */}}
 {{- $hostname := .chezmoi.hostname -}}
 {{- if eq .chezmoi.os "darwin" -}}
-{{-   $hostname := output "scutil" "--get" "LocalHostName" | trim -}}
+{{-   $hostname = output "scutil" "--get" "LocalHostName" | trim -}}
 {{- end -}}
 
-{{- $email := promptStringOnce "Git email address for the author/committer" "kirkilese@gmail.com" -}}
-{{- $hostname := promptStringOnce "Hostname for the computer" $hostname -}}
+{{- $email := promptStringOnce . "email" "Git email address for the author/committer" "kirkilese@gmail.com" -}}
+{{- $hostname := promptStringOnce . "hostname" "Hostname for the computer" $hostname -}}
 {{- $languageChoices := list "frontend" "rust" "python" "go" -}}
-{{- $languages := promptMultichoiceOnce "Language ecosystems used on this computer" $languageChoices $languageChoices -}}
+{{- $languages := promptMultichoiceOnce . "languages" "Language ecosystems used on this computer" $languageChoices $languageChoices -}}
+{{- $useHttps := promptBoolOnce . "useHttps" "Use HTTPS instead of SSH for git remotes" false -}}
 
 [data]
     email = {{ $email | quote }}
     hostname = {{ $hostname | quote }}
     languages = [{{ range $i, $lang := $languages }}{{ if $i }}, {{ end }}{{ $lang | quote }}{{ end }}]
+    useHttps = {{ $useHttps }}
 
 [github]
     refreshPeriod = "12h"
