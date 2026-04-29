@@ -27,7 +27,9 @@ SCREENSHOTS_FOLDER="${HOME}/Screenshots"
 # - Activity Monitor
 # - Software Updates
 
-osascript -e 'tell application "System Preferences" to quit'
+osascript -e 'with timeout of 5 seconds
+  tell application "System Preferences" to quit
+end timeout' 2>/dev/null || true
 
 # Ask for the administrator password upfront
 if ! sudo -n true 2>/dev/null; then
@@ -46,8 +48,14 @@ done 2>/dev/null &
 # Add these items to open on login
 LOGIN_ITEMS=("Hammerspoon" "Karabiner-Elements" "Shottr")
 for ITEM in "${LOGIN_ITEMS[@]}"; do
+  if [[ ! -d "/Applications/$ITEM.app" ]]; then
+    echo "skipping login item $ITEM: /Applications/$ITEM.app not installed"
+    continue
+  fi
   PROPERTIES="{ name: \"$ITEM\", path:\"/Applications/$ITEM.app\", hidden:false }"
-  osascript -e "tell application \"System Events\" to make login item at end with properties $PROPERTIES"
+  osascript -e "with timeout of 5 seconds
+  tell application \"System Events\" to make login item at end with properties $PROPERTIES
+end timeout" 2>/dev/null || echo "skipping login item $ITEM: osascript failed or timed out"
 done
 
 # ========== LOCALIZATION ==============

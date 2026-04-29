@@ -25,9 +25,16 @@ EOF
 
 for arg in "$@"; do
   case "$arg" in
-    -h|--help) usage; exit 0 ;;
+    -h | --help)
+      usage
+      exit 0
+      ;;
     --force) FORCE=1 ;;
-    *) echo "Unknown arg: $arg" >&2; usage >&2; exit 2 ;;
+    *)
+      echo "Unknown arg: $arg" >&2
+      usage >&2
+      exit 2
+      ;;
   esac
 done
 
@@ -39,7 +46,7 @@ for cmd in bw jq; do
 done
 
 if [[ -f "$PRIV" && $FORCE -eq 0 ]]; then
-  echo "Key already present at $PRIV (use --force to overwrite)."
+  # echo "Key already present at $PRIV (use --force to overwrite)."
   exit 0
 fi
 
