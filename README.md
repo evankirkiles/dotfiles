@@ -13,26 +13,26 @@ That installs chezmoi, clones this repo, and runs `chezmoi apply`. See
 sequence. Highlights:
 
 - **macOS** — installs Homebrew + `brew bundle`s against
-  `home/.chezmoidata/packages.yaml`, applies system defaults (Finder, Dock,
-  key repeat, login items, Hammerspoon config path), and fetches the git
-  signing key from Bitwarden.
-- **Linux** — preserves any pre-existing `~/.zshrc`/`~/.zprofile` as
-  `*.local`, installs apt packages + the GitHub CLI, bootstraps rustup +
-  `tree-sitter-cli`, and pins a specific neovim release.
+  `home/.chezmoidata/packages.yaml`, applies system defaults (Finder, Dock, key
+  repeat, login items, Hammerspoon config path), and fetches the git signing key
+  from Bitwarden.
+- **Linux** — preserves any pre-existing `~/.zshrc`/`~/.zprofile` as `*.local`,
+  installs apt packages + the GitHub CLI, bootstraps rustup + `tree-sitter-cli`,
+  and pins a specific neovim release.
 
 ## Interactive prompts on first run
 
-- **Xcode Command Line Tools install dialog** *(macOS)* — click "Install";
-  the Homebrew installer waits for it.
+- **Xcode Command Line Tools install dialog** _(macOS)_ — click "Install"; the
+  Homebrew installer waits for it.
 - **`sudo` password** — for macOS defaults / `apt-get install`.
-- **Bitwarden login/unlock** *(macOS)* — `bw login` then `bw unlock` to
-  fetch the SSH signing key.
+- **Bitwarden login/unlock** _(macOS)_ — `bw login` then `bw unlock` to fetch
+  the SSH signing key.
 
 ## Things still done by hand (macOS, OS-level permissions)
 
 - **Hammerspoon Accessibility** — System Settings → Privacy & Security →
-  Accessibility, then reload Hammerspoon. `mash` keybinds won't fire until
-  this is done.
+  Accessibility, then reload Hammerspoon. `mash` keybinds won't fire until this
+  is done.
 - **Karabiner-Elements** driver, Input Monitoring, and Accessibility prompts.
 - **Mac App Store sign-in** — `mas install` lines fail silently otherwise.
 
@@ -44,8 +44,8 @@ Re-init after editing `.chezmoi.toml.tmpl`:
 chezmoi init
 ```
 
-Re-apply macOS defaults (sentinel guards the script, chezmoi state guards
-the invocation — clear both):
+Re-apply macOS defaults (sentinel guards the script, chezmoi state guards the
+invocation — clear both):
 
 ```shell
 rm -f "${XDG_STATE_HOME:-$HOME/.local/state}/dotfiles/macos-defaults-applied"
