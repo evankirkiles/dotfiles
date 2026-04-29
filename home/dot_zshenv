@@ -21,3 +21,8 @@ export CLICOLOR=1
 # Prefer US English and use UTF-8
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US"
+
+# Load private additions if they exist
+if [[ -f "${HOME}/.zshenv.local" ]]; then
+  source "${HOME}/.zshenv.local"
+fi

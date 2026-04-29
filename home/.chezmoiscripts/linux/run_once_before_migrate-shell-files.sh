@@ -11,16 +11,16 @@ set -euo pipefail
 # would copy chezmoi's own content into the .local file (which itself
 # sources .local, creating a loop).
 
-for name in zprofile zshrc; do
-    src="${HOME}/.${name}"
-    dst="${HOME}/.${name}.local"
-    [[ -f "$src" ]] || continue
-    [[ -f "$dst" ]] && continue
-    expected="$(chezmoi cat "$src" 2>/dev/null || true)"
-    actual="$(cat "$src")"
-    if [[ "$expected" == "$actual" ]]; then
-        continue
-    fi
-    echo "Preserving existing ~/.${name} as ~/.${name}.local"
-    mv "$src" "$dst"
+for name in zprofile zshenv zshrc; do
+  src="${HOME}/.${name}"
+  dst="${HOME}/.${name}.local"
+  [[ -f "$src" ]] || continue
+  [[ -f "$dst" ]] && continue
+  expected="$(chezmoi cat "$src" 2>/dev/null || true)"
+  actual="$(cat "$src")"
+  if [[ "$expected" == "$actual" ]]; then
+    continue
+  fi
+  echo "Preserving existing ~/.${name} as ~/.${name}.local"
+  mv "$src" "$dst"
 done

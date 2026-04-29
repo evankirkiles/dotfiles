@@ -9,7 +9,6 @@ plugins=(
   gh
   vi-mode
   chezmoi
-  fzf
   zsh-syntax-highlighting
   zsh-autosuggestions
 )
