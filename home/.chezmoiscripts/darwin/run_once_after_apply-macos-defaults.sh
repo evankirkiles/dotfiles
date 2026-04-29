@@ -23,7 +23,9 @@ SCREENSHOTS_FOLDER="${HOME}/Screenshots"
 osascript -e 'tell application "System Preferences" to quit'
 
 # Ask for the administrator password upfront
-sudo -v
+if ! sudo -n true 2>/dev/null; then
+  sudo -v
+fi
 
 # Keep-alive: update existing `sudo` time stamp until this script has finished
 while true; do
@@ -128,7 +130,7 @@ defaults write com.apple.dock wvous-bl-corner -int 0
 defaults write com.apple.dock wvous-br-corner -int 0
 
 # Use XDG_CONFIG_HOME for: HammerSpoon
-defaults write org.hammerspoon.Hammerspoon MJConfigFile "${XDG_CONFIG_HOME}/hammerspoon/init.lua"
+defaults write org.hammerspoon.Hammerspoon MJConfigFile "${HOME}/.config/hammerspoon/init.lua"
 
 # Kill the affected applications to make their changes take effect
 for app in "Address Book" "Calendar" "Contacts" "Dock" "Finder" "Mail" "Safari" "SystemUIServer" "iCal"; do
