@@ -1,15 +1,17 @@
 [user]
 	name = Evan Kirkiles
-	email = {{ .email | default "kirkilese@gmail.com" }}
-	signingkey = 6E3164057EF9587F
+	email = {{ .email }}
+	signingkey = ~/.ssh/signing_ed25519.pub
 [init]
 	defaultBranch = main
 [pull]
 	rebase = true
-[credential]
-  helper = GIT_CREDENTIAL_HELPER
 [commit]
 	gpgsign = true
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = ~/.config/git/allowed_signers
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f

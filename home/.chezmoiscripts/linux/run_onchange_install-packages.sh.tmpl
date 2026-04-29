@@ -1,0 +1,34 @@
+#!/bin/bash
+set -euo pipefail
+
+# Skip if apt-get isn't available (non-Debian-family distro).
+command -v apt-get >/dev/null 2>&1 || exit 0
+
+SUDO=""
+if [[ $EUID -ne 0 ]]; then
+  SUDO="sudo"
+fi
+
+$SUDO apt-get update
+$SUDO apt-get install -y \
+{{ range $i, $pkg := .packages.linux.apt -}}
+  {{ $pkg | quote }}{{ if lt (add $i 1) (len $.packages.linux.apt) }} \{{ end }}
+{{ end }}
+
+# Install gh (GitHub CLI) from the official apt repo, if not already present.
+if ! command -v gh >/dev/null 2>&1; then
+  $SUDO mkdir -p -m 755 /etc/apt/keyrings
+  curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg \
+    | $SUDO tee /etc/apt/keyrings/githubcli-archive-keyring.gpg >/dev/null
+  $SUDO chmod 644 /etc/apt/keyrings/githubcli-archive-keyring.gpg
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" \
+    | $SUDO tee /etc/apt/sources.list.d/github-cli.list >/dev/null
+  $SUDO apt-get update
+  $SUDO apt-get install -y gh
+fi
+
+# Symlink fdfind → fd so the existing `fd` muscle memory works.
+if command -v fdfind >/dev/null 2>&1 && ! command -v fd >/dev/null 2>&1; then
+  mkdir -p "$HOME/.local/bin"
+  ln -sf "$(command -v fdfind)" "$HOME/.local/bin/fd"
+fi

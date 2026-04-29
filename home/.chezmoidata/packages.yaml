@@ -8,7 +8,6 @@ packages:
       - "neovim"
       - "tmux"
       - "tmuxinator"
-      - "mas"
       - "coreutils"
       # search/grep/diff
       - "fd"
@@ -24,12 +23,29 @@ packages:
       - "docker-credential-helper"
       - "gnupg"
       - "topgrade"
+      - "bitwarden-cli"
     casks:
       - "kitty"
       - "font-inconsolata-nerd-font"
       - "hammerspoon"
       - "karabiner-elements"
       - "shottr"
-    mas:
-      - name: "Bitwarden"
-        id: 1352778147
+      - "bitwarden"
+  linux:
+    apt:
+      - "git"
+      # core/dotfiles
+      - "neovim"
+      - "tmux"
+      - "coreutils"
+      # search/grep/diff
+      - "fd-find" # binary is `fdfind`; install script symlinks to `fd`
+      - "fzf"
+      - "ripgrep"
+      - "gawk"
+      - "jq"
+      # tooling / source control
+      - "gnupg"
+      - "pinentry-curses"
+      # terminal
+      - "kitty-terminfo" # so TERM=xterm-kitty resolves over SSH
