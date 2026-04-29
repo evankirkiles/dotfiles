@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Fetch the git signing SSH key from Bitwarden and install it under ~/.ssh/.
-# Idempotent — does nothing if the key files already exist (use --force to refresh).
+# Idempotent — bails out if the key files already exist (use --force to refresh).
 set -euo pipefail
 
 ITEM_NAME="${SIGNING_KEY_BW_ITEM:-Git Signing Key}"
@@ -10,13 +10,13 @@ FORCE=0
 
 usage() {
   cat <<EOF
-Usage: signing-key-sync [--force]
+Usage: $(basename "$0") [--force]
 
 Fetches "$ITEM_NAME" from Bitwarden (override with SIGNING_KEY_BW_ITEM env var)
 and writes its private + public keys to ~/.ssh/signing_ed25519{,.pub}.
 
-After fetching, the key is added to the SSH agent. On macOS, the passphrase
-(if any) is stored in the Keychain via --apple-use-keychain.
+After fetching, the key is added to the SSH agent and the passphrase (if any)
+is stored in the macOS login keychain via --apple-use-keychain.
 
 Options:
   --force    Overwrite existing key files.
@@ -31,15 +31,12 @@ for arg in "$@"; do
   esac
 done
 
-if ! command -v bw >/dev/null 2>&1; then
-  echo "error: bw (Bitwarden CLI) not found on PATH" >&2
-  exit 1
-fi
-
-if ! command -v jq >/dev/null 2>&1; then
-  echo "error: jq not found on PATH" >&2
-  exit 1
-fi
+for cmd in bw jq; do
+  if ! command -v "$cmd" >/dev/null 2>&1; then
+    echo "error: $cmd not found on PATH" >&2
+    exit 1
+  fi
+done
 
 if [[ -f "$PRIV" && $FORCE -eq 0 ]]; then
   echo "Key already present at $PRIV (use --force to overwrite)."
@@ -48,14 +45,11 @@ fi
 
 # Make sure bw is unlocked. Prompts the user interactively when not.
 status="$(bw status | jq -r '.status')"
-case "$status" in
-  unauthenticated)
-    echo "Logging in to Bitwarden (interactive)..."
-    bw login
-    status="$(bw status | jq -r '.status')"
-    ;;
-esac
-
+if [[ "$status" == "unauthenticated" ]]; then
+  echo "Logging in to Bitwarden (interactive)..."
+  bw login
+  status="$(bw status | jq -r '.status')"
+fi
 if [[ "$status" == "locked" ]]; then
   echo "Unlocking Bitwarden..."
   BW_SESSION="$(bw unlock --raw)"
@@ -67,6 +61,7 @@ item_json="$(bw get item "$ITEM_NAME")"
 
 priv_key="$(jq -r '.sshKey.privateKey // empty' <<<"$item_json")"
 pub_key="$(jq -r '.sshKey.publicKey // empty' <<<"$item_json")"
+passphrase="$(jq -r '.fields[]? | select(.name=="passphrase") | .value // empty' <<<"$item_json")"
 
 if [[ -z "$priv_key" || -z "$pub_key" ]]; then
   echo "error: item '$ITEM_NAME' has no .sshKey.privateKey/.publicKey fields" >&2
@@ -86,11 +81,24 @@ chmod 644 "$PUB"
 
 echo "Wrote $PRIV and $PUB."
 
-# Add to ssh-agent so signing works without prompting.
-if [[ "$(uname -s)" == "Darwin" ]]; then
-  ssh-add --apple-use-keychain "$PRIV" 2>/dev/null || ssh-add "$PRIV"
+# Add to ssh-agent and stash the passphrase in the login keychain on first
+# add via --apple-use-keychain. SSH_ASKPASS feeds the passphrase
+# non-interactively so this script can run unattended (e.g. under chezmoi).
+if [[ -n "$passphrase" ]]; then
+  askpass="$(mktemp "${TMPDIR:-/tmp}/ssh-askpass.XXXXXX")"
+  trap 'rm -f "$askpass"' EXIT
+  cat >"$askpass" <<'EOF'
+#!/bin/sh
+printf '%s\n' "$SSH_PASSPHRASE"
+EOF
+  chmod 700 "$askpass"
+  SSH_PASSPHRASE="$passphrase" \
+    DISPLAY=:0 \
+    SSH_ASKPASS="$askpass" \
+    SSH_ASKPASS_REQUIRE=force \
+    ssh-add --apple-use-keychain "$PRIV" </dev/null
 else
-  ssh-add "$PRIV"
+  ssh-add --apple-use-keychain "$PRIV" 2>/dev/null || ssh-add "$PRIV"
 fi
 
 echo "Done. Test with: git -c user.signingkey=\"$PUB\" commit --allow-empty -m test"
