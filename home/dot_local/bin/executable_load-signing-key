@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+KEY="$HOME/.ssh/signing_ed25519"
+
+if [[ ! -f "$KEY" ]]; then
+  echo "load-signing-key: $KEY not found" >&2
+  exit 1
+fi
+
+fingerprint=$(ssh-keygen -lf "$KEY.pub" | awk '{print $2}')
+
+if ssh-add -l 2>/dev/null | grep -q "$fingerprint"; then
+  echo "load-signing-key: already loaded ($fingerprint)"
+  exit 0
+fi
+
+ssh-add --apple-use-keychain "$KEY"

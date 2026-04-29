@@ -10,6 +10,7 @@
 .config/karabiner
 .config/kitty
 .chezmoiscripts/darwin/**
+.local/bin/load-signing-key
 {{ end }}
 
 {{ if ne .chezmoi.os "linux" }}
