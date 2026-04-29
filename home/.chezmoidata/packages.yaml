@@ -19,9 +19,7 @@ packages:
       - "jq"
       # tooling / source control
       - "gh"
-      - "pinentry-mac"
       - "docker-credential-helper"
-      - "gnupg"
       - "topgrade"
       - "bitwarden-cli"
     casks:
@@ -44,8 +42,5 @@ packages:
       - "ripgrep"
       - "gawk"
       - "jq"
-      # tooling / source control
-      - "gnupg"
-      - "pinentry-curses"
       # terminal
       - "kitty-terminfo" # so TERM=xterm-kitty resolves over SSH
