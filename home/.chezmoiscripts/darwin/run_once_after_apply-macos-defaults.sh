@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Skip if we've already applied defaults on this machine. Delete the sentinel
+# (or pass FORCE=1) to re-run; see README for details.
+SENTINEL="${XDG_STATE_HOME:-$HOME/.local/state}/dotfiles/macos-defaults-applied"
+if [[ -f "$SENTINEL" && "${FORCE:-0}" != "1" ]]; then
+  exit 0
+fi
+
 LANGUAGES=(en)
 LOCALE="en_US@currency=USD"
 SCREENSHOTS_FOLDER="${HOME}/Screenshots"
@@ -136,3 +143,6 @@ defaults write org.hammerspoon.Hammerspoon MJConfigFile "${HOME}/.config/hammers
 for app in "Address Book" "Calendar" "Contacts" "Dock" "Finder" "Mail" "Safari" "SystemUIServer" "iCal"; do
   killall "${app}" &>/dev/null
 done
+
+mkdir -p "$(dirname "$SENTINEL")"
+touch "$SENTINEL"

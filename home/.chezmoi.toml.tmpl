@@ -6,10 +6,13 @@
 
 {{- $email := promptString "Git email address for the author/committer" "kirkilese@gmail.com" -}}
 {{- $hostname := promptString "Hostname for the computer" $hostname -}}
+{{- $languageChoices := list "frontend" "rust" "python" "go" -}}
+{{- $languages := promptMultichoice "Language ecosystems used on this computer" $languageChoices $languageChoices -}}
 
 [data]
     email = {{ $email | quote }}
     hostname = {{ $hostname | quote }}
+    languages = [{{ range $i, $lang := $languages }}{{ if $i }}, {{ end }}{{ $lang | quote }}{{ end }}]
 
 [github]
     refreshPeriod = "12h"

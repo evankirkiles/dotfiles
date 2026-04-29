@@ -44,10 +44,18 @@ Changed `.chezmoi.toml.tmpl`:
 chezmoi init
 ```
 
-Re-run all `run_once_*` scripts (e.g. to re-apply macOS defaults):
+Re-apply macOS defaults (guarded by a sentinel so editing the script alone
+won't re-trigger it):
 
 ```shell
+rm -f "${XDG_STATE_HOME:-$HOME/.local/state}/dotfiles/macos-defaults-applied"
 chezmoi state delete-bucket --bucket=scriptState && chezmoi apply
+```
+
+Or run the script directly with `FORCE=1`:
+
+```shell
+FORCE=1 ~/.local/share/chezmoi/home/.chezmoiscripts/darwin/run_once_after_apply-macos-defaults.sh
 ```
 
 Force re-fetch the signing key from Bitwarden:
