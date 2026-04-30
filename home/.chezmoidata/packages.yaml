@@ -36,6 +36,7 @@ packages:
       - "tmux"
       - "tmuxinator"
       - "coreutils"
+      - "xclip"
       # search/grep/diff
       - "fd-find" # binary is `fdfind`; install script symlinks to `fd`
       - "fzf"
