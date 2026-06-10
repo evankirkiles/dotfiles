@@ -77,6 +77,7 @@ return {
     end,
   },
   -- Autosuggest menu
+  { "saghen/blink.lib" },
   {
     "saghen/blink.cmp",
     opts = {

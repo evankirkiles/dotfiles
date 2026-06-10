@@ -16,33 +16,22 @@ return {
       servers = {
         wgsl_analyzer = {},
         clojure_lsp = {},
-{{- if has "frontend" .languages }}
         graphql = {},
         cssls = {},
-        tailwindcss = {
+        biome = {},
+        eslint = {
           settings = {
-            tailwindCSS = {
-              classFunctions = {
-                "tw",
-                "clsx",
-                "cx",
-                "cva",
-              },
-            },
+            useFlatConfig = true,
           },
-        },
-{{- end }}
+        }
       },
       inlay_hints = {
         enabled = false,
       },
       setup = {
-{{- if has "rust" .languages }}
         rust_analyzer = function()
           return true
         end,
-{{- end }}
-{{- if has "frontend" .languages }}
         eslint = function()
           vim.api.nvim_create_autocmd("BufWritePre", {
             pattern = { "*.ts", "*.tsx", "*.js", "*.jsx", "*.mjs" },
@@ -51,7 +40,6 @@ return {
             end,
           })
         end,
-{{- end }}
       },
     },
   },
@@ -64,25 +52,17 @@ return {
         "shellcheck",
         "shfmt",
         "wgsl-analyzer",
-{{- if has "python" .languages }}
         "flake8",
-{{- end }}
-{{- if has "rust" .languages }}
         "rust-analyzer",
-{{- end }}
-{{- if has "frontend" .languages }}
         "graphql-language-service-cli",
         "css-lsp",
-{{- end }}
       },
     },
   },
-{{- if has "rust" .languages }}
   -- Rust LSP configuration
   {
     "mrcjkb/rustaceanvim",
     version = "^5",
     lazy = false,
   },
-{{- end }}
 }

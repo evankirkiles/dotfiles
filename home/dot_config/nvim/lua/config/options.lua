@@ -7,6 +7,9 @@ vim.opt.textwidth = 80
 vim.opt.numberwidth = 4
 vim.wo.relativenumber = false
 
+-- No mini snippets in completion
+vim.g.lazyvim_mini_snippets_in_completion = true
+
 -- over SSH, force OSC52 clipboard management
 vim.opt.clipboard = "unnamedplus"
 if vim.env.SSH_TTY then

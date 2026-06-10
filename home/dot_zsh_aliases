@@ -35,3 +35,9 @@ alias quit="exit"
 alias week="date +%V"
 alias speedtest="wget -O /dev/null http://speed.transip.nl/100mb.bin"
 alias grip='grip --browser --pass=$GITHUB_TOKEN'
+
+# Load private additions if they exist
+if [[ -f "${HOME}/.zsh_aliases.local" ]]; then
+  source "${HOME}/.zsh_aliases.local"
+fi
+

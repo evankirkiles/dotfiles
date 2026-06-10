@@ -8,7 +8,6 @@ return {
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, {
         "bash",
-        "clojure",
         "diff",
         "glsl",
         "ini",
@@ -23,7 +22,6 @@ return {
         "vimdoc",
         "wgsl",
         "yaml",
-{{- if has "frontend" .languages }}
         "css",
         "graphql",
         "html",
@@ -32,10 +30,7 @@ return {
         "scss",
         "tsx",
         "typescript",
-{{- end }}
-{{- if has "rust" .languages }}
         "rust",
-{{- end }}
       })
     end,
   },
@@ -60,9 +55,7 @@ return {
       formatters_by_ft = {
         markdown = { "prettier" },
         wgsl = { "wgslfmt" },
-{{- if has "rust" .languages }}
         rust = { "rustfmt", lsp_format = "fallback" },
-{{- end }}
       },
     },
   },

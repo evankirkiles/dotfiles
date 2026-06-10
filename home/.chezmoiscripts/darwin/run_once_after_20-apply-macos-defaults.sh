@@ -46,7 +46,7 @@ done 2>/dev/null &
 # ====== LOGIN ITEMS ===============
 
 # Add these items to open on login
-LOGIN_ITEMS=("Hammerspoon" "Karabiner-Elements" "Shottr")
+LOGIN_ITEMS=("Hammerspoon" "Hyperkey" "Shottr")
 for ITEM in "${LOGIN_ITEMS[@]}"; do
   if [[ ! -d "/Applications/$ITEM.app" ]]; then
     echo "skipping login item $ITEM: /Applications/$ITEM.app not installed"
@@ -96,6 +96,14 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false   # 
 defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false  # Disable opening and closing window animations
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false # Disable smart quotes
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false  # Disable smart dashes
+
+# Hyperkey: tap Caps Lock for Escape, hold Caps Lock for left Control.
+defaults write com.knollsoft.Hyperkey capsLockRemapped -int 1
+defaults write com.knollsoft.Hyperkey capsLockKeycode -int 224
+defaults write com.knollsoft.Hyperkey executeQuickHyperKey -int 1
+defaults write com.knollsoft.Hyperkey quickHyperKeycode -int 53
+defaults write com.knollsoft.Hyperkey keyRemap -int 2
+defaults write com.knollsoft.Hyperkey hyperFlags -int 1966080
 
 # Macbook Keyboard / BezelServices
 defaults write com.apple.BezelServices kDim -bool true   # Automatically illuminate built-in MacBook keyboard in low light
