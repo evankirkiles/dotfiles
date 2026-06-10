@@ -9,7 +9,11 @@ return {
       "nvim-lua/plenary.nvim",
       "sindrets/diffview.nvim",
     },
-    config = true,
+    config = {
+      commit_editor = {
+        staged_diff_split_kind = "auto",
+      },
+    },
     keys = {
       { "<leader>gg", "<cmd>Neogit<cr>", desc = "Neogit" },
     },
