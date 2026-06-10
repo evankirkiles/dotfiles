@@ -21,6 +21,12 @@ if not root then
   return {}
 end
 
+local function filter_oxlint_tsconfig_error(diagnostics)
+  return vim.tbl_filter(function(diagnostic)
+    return diagnostic.code ~= "typescript(tsconfig-error)"
+  end, diagnostics or {})
+end
+
 return {
   {
     "neovim/nvim-lspconfig",
@@ -30,15 +36,20 @@ return {
         tailwindcss = { enabled = false },
         biome = {},
         eslint = {},
-        oxc = {
+        oxlint = {
+          cmd = { root .. "/src/tools-lint/cli/oxlint-lsp-proxy" },
           handlers = {
             ["textDocument/publishDiagnostics"] = function(err, result, ctx, config)
               if result and result.diagnostics then
-                result.diagnostics = vim.tbl_filter(function(diag)
-                  return diag.code ~= "typescript(tsconfig-error)"
-                end, result.diagnostics)
+                result.diagnostics = filter_oxlint_tsconfig_error(result.diagnostics)
               end
-              vim.lsp.handlers["textDocument/publishDiagnostics"](err, result, ctx, config)
+              return vim.lsp.handlers["textDocument/publishDiagnostics"](err, result, ctx, config)
+            end,
+            ["textDocument/diagnostic"] = function(err, result, ctx, config)
+              if result and result.kind == "full" and result.items then
+                result.items = filter_oxlint_tsconfig_error(result.items)
+              end
+              return vim.lsp.handlers["textDocument/diagnostic"](err, result, ctx, config)
             end,
           },
         },
