@@ -1,5 +1,5 @@
 # Shortcuts
-alias reload="source ~/.zshenv; source ~/.zprofile; source ~/.zshrc"
+alias reload="exec zsh"
 alias uuid="uuidgen | tr '[:upper:]' '[:lower:]'"
 
 # Editors
