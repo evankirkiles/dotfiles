@@ -67,4 +67,6 @@ jobs:
       # templates and bad references without running install scripts or
       # downloading externals (oh-my-zsh, plugins).
       - name: chezmoi apply --dry-run
-        run: chezmoi apply --dry-run --no-tty --exclude=scripts,externals
+        run:
+          chezmoi apply --dry-run --no-tty --source="$PWD"
+          --exclude=scripts,externals
