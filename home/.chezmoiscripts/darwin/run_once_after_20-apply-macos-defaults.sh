@@ -1,4 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# No `-e`: many `defaults`/`killall`/`osascript` calls below legitimately
+# return non-zero (app not running, pref not yet created) and must not abort
+# the whole run.
+set -uo pipefail
 
 # Skip if we've already applied defaults on this machine. Delete the sentinel
 # (or pass FORCE=1) to re-run; see README for details.

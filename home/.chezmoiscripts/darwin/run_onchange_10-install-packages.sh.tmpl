@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
 brew bundle --file=/dev/stdin <<EOF
 {{ range .packages.darwin.taps -}}

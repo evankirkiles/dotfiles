@@ -1,7 +1,6 @@
 packages:
   darwin:
     taps:
-      - "lotyp/homebrew-formulae"
     brews:
       - "git"
       # core/dotfiles
@@ -17,6 +16,7 @@ packages:
       - "ripgrep"
       - "gawk"
       - "jq"
+      - "shellcheck" # lints the dotfiles scripts; matches CI
       # tooling / source control
       - "gh"
       - "docker-credential-helper"
@@ -43,6 +43,7 @@ packages:
       - "ripgrep"
       - "gawk"
       - "jq"
+      - "shellcheck" # lints the dotfiles scripts; matches CI
       # terminal
       - "kitty-terminfo" # so TERM=xterm-kitty resolves over SSH
       # libraries needed for other things

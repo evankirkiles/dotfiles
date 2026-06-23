@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  shellcheck:
+    name: shellcheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install chezmoi
+        run: |
+          sh -c "$(curl -fsLS get.chezmoi.io)" -- -b "$HOME/.local/bin"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      # Plain (non-template) scripts can be linted directly. shellcheck is
+      # preinstalled on GitHub's ubuntu runners.
+      - name: Lint shell scripts
+        run: |
+          find home/.chezmoiscripts home/dot_local/bin -type f ! -name '*.tmpl' -print0 \
+            | xargs -0 shellcheck
+
+      # Template scripts contain Go template syntax that shellcheck can't parse,
+      # so render them with chezmoi first, then lint the output. Rendering both
+      # OS variants works on any host since neither branches on .chezmoi.os.
+      - name: Lint rendered template scripts
+        run: |
+          rc=0
+          while IFS= read -r -d '' tmpl; do
+            echo "::group::$tmpl"
+            if ! chezmoi execute-template --source="$PWD" < "$tmpl" | shellcheck -; then
+              rc=1
+            fi
+            echo "::endgroup::"
+          done < <(find home/.chezmoiscripts -type f -name '*.tmpl' -print0)
+          exit "$rc"
+
+  chezmoi:
+    name: dry-run apply (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install chezmoi
+        run: |
+          sh -c "$(curl -fsLS get.chezmoi.io)" -- -b "$HOME/.local/bin"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      # Generate the config from .chezmoi.toml.tmpl non-interactively, using the
+      # default answer for every prompt.
+      - name: chezmoi init
+        run: chezmoi init --source="$PWD" --promptDefaults
+
+      # Render every managed file/template for this OS. Catches malformed
+      # templates and bad references without running install scripts or
+      # downloading externals (oh-my-zsh, plugins).
+      - name: chezmoi apply --dry-run
+        run: chezmoi apply --dry-run --no-tty --exclude=scripts,externals

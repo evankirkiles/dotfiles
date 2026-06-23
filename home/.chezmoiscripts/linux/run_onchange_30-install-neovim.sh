@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -u
+set -euo pipefail
 export PATH="$HOME/.local/bin:$PATH"
 
 desired="v0.12.0"
