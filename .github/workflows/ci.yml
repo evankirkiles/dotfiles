@@ -67,6 +67,10 @@ jobs:
       # templates and bad references without running install scripts or
       # downloading externals (oh-my-zsh, plugins).
       - name: chezmoi apply --dry-run
+        # Authenticate chezmoi's gitHubKeys template calls so dry-run apply
+        # doesn't hit the unauthenticated GitHub API rate limit (60/hr/IP).
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run:
           chezmoi apply --dry-run --no-tty --source="$PWD"
           --exclude=scripts,externals
